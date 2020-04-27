@@ -1,0 +1,9 @@
+
+base :ruby
+
+layers(:docker, 
+    :docker_compose, 
+    :dockerize,
+)
+
+variants(:node)

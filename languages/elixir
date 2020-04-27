@@ -1,0 +1,5 @@
+
+base :elixir
+layers(:docker, :docker_compose, :dockerize)
+variants(:node)
+
