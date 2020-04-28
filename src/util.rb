@@ -89,13 +89,11 @@ def write_ci_user(out)
   out.puts <<~EOL
              ENV USER_NAME=#{CI_USER} GROUP_NAME=#{CI_GROUP}
 
-             RUN addgroup -S ${GROUP_NAME} && \\
-                 adduser -G ${GROUP_NAME} -DS -h /home/${USER_NAME} ${USER_NAME} && \\
-                 echo "${USER_NAME} ALL=(root) NOPASSWD:ALL" >>/etc/sudoers
+             RUN groupadd --gid 2001 #{CI_GROUP} && \\
+                 useradd --uid 2001 --gid #{CI_GROUP} --shell #{CI_SHELL} --create-home #{CI_USER} && \\
+                 echo "%#{CI_GROUP} ALL=(root) NOPASSWD:ALL" >>/etc/sudoers
 
-             WORKDIR /home/${USER_NAME}
-             COPY --chown=${USER_NAME}:${GROUP_NAME} dist/ scripts/
-             USER ${USER_NAME}
+             USER #{CI_USER}
            EOL
 end
 
@@ -302,7 +300,8 @@ def write_file(path, input)
 end
 
 def docker_exec(command)
-  ENV["CI"] ? system(command) : puts("\t" + command)
+  puts("\t===> " + command)
+  ENV["CI"] && system(command)
 end
 
 def find_tags_and_aliases(lang, allow_regex, include_regex)

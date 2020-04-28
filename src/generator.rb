@@ -1,4 +1,5 @@
 require "fileutils"
+require "json"
 
 require_relative "util"
 require_relative "section"
@@ -25,11 +26,17 @@ class Generator
 
     puts "Generating manifest for #{self.language}:"
     FileUtils.rmdir(File.join(self.output_dir, self.language)) rescue nil
-  
-    find_tags_and_aliases(@base, @tag_filter, @tag_include_filter).each do |aliases|
-      out = StringIO.new
-      tag = aliases.shift
+    image_base = "#{DOCKER_REPO}/#{self.language}"
+    manifest = {base: image_base, items: []}
 
+    find_tags_and_aliases(@base, @tag_filter, @tag_include_filter).each do |aliases|
+      out, tag = StringIO.new, aliases.shift
+      
+      manifest_item, variant_mf = {
+        tag: tag,
+        aliases: aliases,
+      }, []
+      
       write_header(out)
       out.puts
 
@@ -65,8 +72,6 @@ class Generator
 
       puts "\t #{tag}, #{aliases}"
 
-      image_base = "#{DOCKER_REPO}/#{self.language}"
-
       write_file(File.join(path, "Dockerfile"), out)
       write_file(File.join(path, "TAG"), tag)
       write_file(File.join(path, "IMAGE"), image_base)
@@ -75,12 +80,19 @@ class Generator
       @variants.each do |variant|
         case variant
         when "node", :node
+          variant_mf << variant
           node_manifest_gen(tag)
         else
           puts "Unsuported language variant: #{variant}"
         end
       end
+
+      manifest_item[:variants] = variant_mf
+      manifest[:items] << manifest_item
     end
+
+    manifest_path = File.join(self.output_dir, self.language, "manifest.json")
+    File.open(manifest_path, "w"){|f| f.puts(JSON.pretty_generate(manifest)) }
   end
 
   def manifest_gen(tag)
@@ -125,12 +137,12 @@ class Generator
   def node_manifest_gen(tag)
     out = StringIO.new
     base_repo = "#{DOCKER_REPO}/#{self.language}"
-    variant_tag = "#{tag}-node"
-
+    from_tag = "#{tag}"
+  
     write_header(out)
     out.puts
 
-    write_base(out, base_repo, variant_tag)
+    write_base(out, base_repo, from_tag)
     out.puts
 
     write_official_nodejs(out)
@@ -191,10 +203,16 @@ end
 module BuildDocker
   def self.run(lang)
     outdir = File.join(ENV.fetch("DIRECTORY") { "dist" }, lang)
-    do_push = ENV["DOCKER_PUSH"] != ""
+    allowed_tags = ENV.fetch("TAGS", "").split(",").map(&:strip)
+    allowed_variants = ENV.fetch("VARIANTS", "").split(",").map(&:strip)
+    
+    do_push = !!ENV["DOCKER_PUSH"]
 
     Dir.children(outdir).each do |tag|
       path = File.join(outdir, tag)
+      if allowed_tags.size > 0 
+        next unless allowed_tags.include?(tag)
+      end
 
       Dir.chdir(path) do
         aliases = File.read("ALIASES").split(",").map(&:strip) rescue []
@@ -203,20 +221,25 @@ module BuildDocker
         puts "Building #{docker_image}"
 
         docker_exec("docker build -t #{docker_image} .")
+        docker_exec("docker push #{docker_image}") if do_push
 
-        aliase_images = []
-        if aliases.size > 0
-          aliase_images = aliases.map { |t| "#{image}:#{t}" }
-          docker_exec("docker tag #{docker_image} #{aliase_images.join(" ")}")
+        aliases.each do |t|
+          target_image = "#{image}:#{t}"          
+          docker_exec("docker tag #{docker_image} #{target_image}")
+          docker_exec("docker push #{target_image}") if do_push
         end
 
-        docker_exec("docker push #{docker_image} #{aliase_images.join(" ")}") if do_push
-
         Dir.children(".").each do |variant|
-          puts
-          variant_image = "#{image}:#{tag}-#{variant}"
-          docker_exec("docker build -t #{variant_image} #{variant}")
-          docker_exec("docker push #{variant_image}") if do_push
+          if File.directory?(variant)
+            if allowed_variants.size > 0
+              next unless allowed_variants.include?(variant)
+            end
+
+            puts "\n\t==> generating variant #{variant}"
+            variant_image = "#{image}:#{tag}-#{variant}"
+            docker_exec("docker build -f #{variant}/Dockerfile -t #{variant_image} #{variant}")
+            docker_exec("docker push #{variant_image}") if do_push
+          end
         end
 
         puts

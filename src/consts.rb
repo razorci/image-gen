@@ -2,6 +2,7 @@ DOCKER_REPO = "razorci"
 CI_USER = "razorci"
 CI_GROUP = "razor"
 DOCKER_BRANCH = "master"
+CI_SHELL = "/bin/bash"
 
 REJECT_TAGS = [
   /slim/,
