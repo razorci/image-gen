@@ -22,21 +22,21 @@ class Generator
   end
 
   def run()
-    exitWith("No :base set for #{self.language}") unless @base
+    exit_with("No :base set for #{self.language}") unless @base
 
     puts "Generating manifest for #{self.language}:"
     FileUtils.rmdir(File.join(self.output_dir, self.language)) rescue nil
     image_base = "#{DOCKER_REPO}/#{self.language}"
-    manifest = {base: image_base, items: []}
+    manifest = { base: image_base, items: [] }
 
     find_tags_and_aliases(@base, @tag_filter, @tag_include_filter).each do |aliases|
       out, tag = StringIO.new, aliases.shift
-      
+
       manifest_item, variant_mf = {
         tag: tag,
         aliases: aliases,
       }, []
-      
+
       write_header(out)
       out.puts
 
@@ -92,7 +92,7 @@ class Generator
     end
 
     manifest_path = File.join(self.output_dir, self.language, "manifest.json")
-    File.open(manifest_path, "w"){|f| f.puts(JSON.pretty_generate(manifest)) }
+    File.open(manifest_path, "w") { |f| f.puts(JSON.pretty_generate(manifest)) }
   end
 
   def manifest_gen(tag)
@@ -111,7 +111,7 @@ class Generator
 
     out.puts
     write_ci_user(out)
-    
+
     @layers.each do |key, info|
       out.puts
       out.put(%Q{## #{key}})
@@ -138,7 +138,7 @@ class Generator
     out = StringIO.new
     base_repo = "#{DOCKER_REPO}/#{self.language}"
     from_tag = "#{tag}"
-  
+
     write_header(out)
     out.puts
 
@@ -171,9 +171,9 @@ class Generator
     @variants |= vars
   end
 
-  def layer(message, input=nil)
+  def layer(message, input = nil)
     if input == nil
-      message = nil 
+      message = nil
       input = message
     end
 
@@ -190,10 +190,8 @@ class Generator
 end
 
 module GeneratorDocker
-  def self.run(lang)
+  def self.run(lang, outdir)
     path = "languages/#{lang}"
-    outdir = ENV.fetch("DIRECTORY") { "dist" }
-
     gen = Generator.new(lang, outdir)
     File.open(path) { |f| gen.instance_eval(f.read) }
     gen.run
@@ -201,19 +199,21 @@ module GeneratorDocker
 end
 
 module BuildDocker
-  def self.run(lang)
-    outdir = File.join(ENV.fetch("DIRECTORY") { "dist" }, lang)
+  def self.run(lang, outdir)
     allowed_tags = ENV.fetch("TAGS", "").split(",").map(&:strip)
     allowed_variants = ENV.fetch("VARIANTS", "").split(",").map(&:strip)
-    
-    do_push = !!ENV["DOCKER_PUSH"]
 
-    Dir.children(outdir).each do |tag|
-      path = File.join(outdir, tag)
-      if allowed_tags.size > 0 
+    do_push = !!ENV["DOCKER_PUSH"]
+    language_path = File.join(outdir, lang)
+
+    Dir.children(language_path).each do |tag|
+      path = File.join(language_path, tag)
+      if allowed_tags.size > 0
         next unless allowed_tags.include?(tag)
       end
 
+      next unless File.directory?(path)
+      
       Dir.chdir(path) do
         aliases = File.read("ALIASES").split(",").map(&:strip) rescue []
         image = File.read("IMAGE").strip
@@ -224,7 +224,7 @@ module BuildDocker
         docker_exec("docker push #{docker_image}") if do_push
 
         aliases.each do |t|
-          target_image = "#{image}:#{t}"          
+          target_image = "#{image}:#{t}"
           docker_exec("docker tag #{docker_image} #{target_image}")
           docker_exec("docker push #{target_image}") if do_push
         end

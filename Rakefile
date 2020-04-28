@@ -1,4 +1,4 @@
-require 'rake'
+require "rake"
 
 require_relative "./src/generator"
 
@@ -9,14 +9,18 @@ def require_lang!(args)
   end
 end
 
+def outdir
+  ENV.fetch("DIRECTORY") { File.join(File.dirname(__FILE__), "dockerfiles") }
+end
+
 namespace :generate do
   task :dockerfile, [:lang] do |t, args|
     require_lang!(args)
-    GeneratorDocker.run(args.lang)
+    GeneratorDocker.run(args.lang, outdir)
   end
 
   task :build, [:lang] do |t, args|
     require_lang!(args)
-    BuildDocker.run(args.lang)
+    BuildDocker.run(args.lang, outdir)
   end
 end

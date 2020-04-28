@@ -2,7 +2,7 @@
 base :openjdk
 
 layers(:docker, :docker_compose, :dockerize)
-user_layers(:maven, :gradle, :ant, :sbt)
+user_layers(:maven, :gradle, :ant)
 
 tag_filter /7/, /6/, /jre/, /oracle/
 tag_include_filter /8-jdk/, /stretch/, /buster/
@@ -13,6 +13,5 @@ layer "Update PATH for Java tools", <<~EOL
     # smoke test with path
     RUN mvn -version \\
         && ant -version \\
-        && gradle -version \\
-        && sbt --version
+        && gradle -version
 EOL

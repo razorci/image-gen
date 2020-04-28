@@ -18,7 +18,7 @@ REJECT_TAGS = [
 ]
 
 ANT_VERSION = "1.9.4"
-SBT_VERSION = "1.13.15"
+SBT_VERSION = "0.13.15"
 
 ANT_HOME = "/opt/apache-ant"
 SBT_HOME = "/opt/sbt"

@@ -1,7 +1,7 @@
 require "excon"
 require_relative "consts"
 
-def exitWith(mesg)
+def exit_with(mesg)
   puts mesg
   exit(1)
 end
@@ -11,7 +11,6 @@ def exit_excon(message, resp)
   resp.pp
   exit(1)
 end
-
 
 def build_regex(*tags)
   tags.map do |tag|
@@ -113,6 +112,8 @@ def write_gradle(out, version_regex)
   return unless info.have_commit_directory?
 
   out.puts <<~EOL
+    USER root
+    
     ENV GRADLE_VERSION=#{info.tag} GRADLE_HOME=/opt/gradle
     RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/gradle.zip \\
       https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip \\
@@ -120,12 +121,15 @@ def write_gradle(out, version_regex)
       && rm /tmp/gradle.zip \\
       && ln -s /opt/gradle-* $GRADLE_HOME \\
       && $GRADLE_HOME/bin/gradle -version
+
+    USER #{CI_USER}
   EOL
 end
 
 def write_ant(out, version_regex)
   tag = ANT_VERSION
   out.puts <<~EOL
+    USER root
     ENV ANT_VERSION=#{tag} ANT_HOME=/opt/apache-ant
 
     # Install Ant Version: #{tag}
@@ -135,19 +139,32 @@ def write_ant(out, version_regex)
       && ln -s /opt/apache-ant-* $ANT_HOME \\
       && rm -rf /tmp/apache-ant.tar.gz \\
       && $ANT_HOME/bin/ant -version
+    
+    USER #{CI_USER}
   EOL
 end
 
 def write_sbt(out)
   tag = SBT_VERSION
+  ## detect java version https://stackoverflow.com/questions/7334754/correct-way-to-check-java-version-from-bash-script
+  
   out.puts <<~EOL
+    USER root
+
     # Install sbt #{SBT_VERSION}
-    ENV SBT_HOME=/opt/sbt SBT_VERSION=#{SBT_VERSION}
-    RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/sbt.tgz \\
-      https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-$SBT_VERSION.tgz \\
-      && tar -xzf /tmp/sbt.tgz -C /opt/ \\
-      && rm /tmp/sbt.tgz \\
-      && ${SBT_HOME}/bin/sbt sbtVersion
+    ENV SBT_VERSION=#{SBT_VERSION}
+
+    RUN if grep -q Debian /etc/os-release; then \\
+      curl --silent --show-error --location --fail --retry 3 --output \\
+        sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb \\
+        && dpkg -i sbt-$SBT_VERSION.deb \\
+        && rm sbt-$SBT_VERSION.deb \\
+        && apt-get update \\
+        && apt-get install sbt \\
+        && sbt sbtVersion \\
+      ; fi
+
+    USER #{CI_USER}
   EOL
 end
 
@@ -251,7 +268,7 @@ def official_lts_reference(lang, tag_regex)
   end
 
   unless (git_commit || any_commit) && directory
-    exitWith("No '#{tag_regex}' tag for #{lang}")
+    exit_when("No '#{tag_regex}' tag for #{lang}")
   end
 
   DockerTagInfo.new(commit: git_commit, directory: directory, tag: tag).tap do |info|

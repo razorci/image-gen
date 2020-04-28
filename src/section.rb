@@ -28,9 +28,11 @@ def write_section(out, key)
   when "dockerize", :dockerize
     out.puts <<~EOG
                ENV DOCKERIZE_VERSION v0.6.1
-               RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
-                   && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
-                   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+               RUN if grep -q Debian /etc/os-release; then \
+                    wget -q https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
+                    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
+                    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
+                  ; fi
              EOG
   when :maven, "maven"
     write_maven(out, /^\d+\.\d+\.\d+$/)
