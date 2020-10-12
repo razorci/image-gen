@@ -1,0 +1,93 @@
+{
+  "base": "razorci/openjdk",
+  "items": [
+    {
+      "tag": "16-buster",
+      "aliases": [
+        "16-ea-18-buster",
+        "16-ea-18-jdk-buster",
+        "16-ea-buster",
+        "16-ea-jdk-buster",
+        "16-jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "15-buster",
+      "aliases": [
+        "15-jdk-buster",
+        "buster",
+        "jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "14-buster",
+      "aliases": [
+        "14-jdk-buster",
+        "14.0-buster",
+        "14.0-jdk-buster",
+        "14.0.2-buster",
+        "14.0.2-jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "11",
+      "aliases": [
+        "11-buster",
+        "11-jdk",
+        "11-jdk-buster",
+        "11.0",
+        "11.0-buster",
+        "11.0-jdk",
+        "11.0-jdk-buster",
+        "11.0.8",
+        "11.0.8-buster",
+        "11.0.8-jdk",
+        "11.0.8-jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "11-jre-buster",
+      "aliases": [
+        "11.0-jre-buster",
+        "11.0.8-jre-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "8",
+      "aliases": [
+        "8-buster",
+        "8-jdk",
+        "8-jdk-buster",
+        "8u265-buster",
+        "8u265-jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "8-jre-buster",
+      "aliases": [
+        "8u265-jre-buster"
+      ],
+      "variants": [
+
+      ]
+    }
+  ]
+}

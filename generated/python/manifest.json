@@ -1,0 +1,60 @@
+{
+  "base": "razorci/python",
+  "items": [
+    {
+      "tag": "3",
+      "aliases": [
+        "3-buster",
+        "3.8",
+        "3.8-buster",
+        "3.8.6",
+        "3.8.6-buster",
+        "buster",
+        "latest"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.7",
+      "aliases": [
+        "3.7-buster",
+        "3.7.9",
+        "3.7.9-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.7-stretch",
+      "aliases": [
+        "3.7.9-stretch"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.6",
+      "aliases": [
+        "3.6-buster",
+        "3.6.12",
+        "3.6.12-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.6-stretch",
+      "aliases": [
+        "3.6.12-stretch"
+      ],
+      "variants": [
+
+      ]
+    }
+  ]
+}

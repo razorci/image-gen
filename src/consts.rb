@@ -1,5 +1,5 @@
 DOCKER_REPO = "razorci"
-CI_USER = "razorci"
+CI_USER = "razor"
 CI_GROUP = "razor"
 DOCKER_BRANCH = "master"
 CI_SHELL = "/bin/bash"

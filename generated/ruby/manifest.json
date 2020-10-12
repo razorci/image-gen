@@ -1,0 +1,60 @@
+{
+  "base": "razorci/ruby",
+  "items": [
+    {
+      "tag": "2",
+      "aliases": [
+        "2-buster",
+        "2.7",
+        "2.7-buster",
+        "2.7.2",
+        "2.7.2-buster",
+        "buster",
+        "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "2.6",
+      "aliases": [
+        "2.6-buster",
+        "2.6.6",
+        "2.6.6-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "2.6-stretch",
+      "aliases": [
+        "2.6.6-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "2.5",
+      "aliases": [
+        "2.5-buster",
+        "2.5.8",
+        "2.5.8-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "2.5-stretch",
+      "aliases": [
+        "2.5.8-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    }
+  ]
+}

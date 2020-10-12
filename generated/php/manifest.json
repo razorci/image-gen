@@ -1,0 +1,245 @@
+{
+  "base": "razorci/php",
+  "items": [
+    {
+      "tag": "7",
+      "aliases": [
+        "7-buster",
+        "7-cli",
+        "7-cli-buster",
+        "7.4",
+        "7.4-buster",
+        "7.4-cli",
+        "7.4-cli-buster",
+        "7.4.11",
+        "7.4.11-buster",
+        "7.4.11-cli",
+        "7.4.11-cli-buster",
+        "buster",
+        "cli",
+        "cli-buster",
+        "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7-apache",
+      "aliases": [
+        "7-apache-buster",
+        "7.4-apache",
+        "7.4-apache-buster",
+        "7.4.11-apache",
+        "7.4.11-apache-buster",
+        "apache",
+        "apache-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7-fpm",
+      "aliases": [
+        "7-fpm-buster",
+        "7.4-fpm",
+        "7.4-fpm-buster",
+        "7.4.11-fpm",
+        "7.4.11-fpm-buster",
+        "fpm",
+        "fpm-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7-zts",
+      "aliases": [
+        "7-zts-buster",
+        "7.4-zts",
+        "7.4-zts-buster",
+        "7.4.11-zts",
+        "7.4.11-zts-buster",
+        "zts",
+        "zts-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3",
+      "aliases": [
+        "7.3-buster",
+        "7.3-cli",
+        "7.3-cli-buster",
+        "7.3.23",
+        "7.3.23-buster",
+        "7.3.23-cli",
+        "7.3.23-cli-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-apache",
+      "aliases": [
+        "7.3-apache-buster",
+        "7.3.23-apache",
+        "7.3.23-apache-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-fpm",
+      "aliases": [
+        "7.3-fpm-buster",
+        "7.3.23-fpm",
+        "7.3.23-fpm-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-zts",
+      "aliases": [
+        "7.3-zts-buster",
+        "7.3.23-zts",
+        "7.3.23-zts-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-cli-stretch",
+      "aliases": [
+        "7.3-stretch",
+        "7.3.23-cli-stretch",
+        "7.3.23-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-apache-stretch",
+      "aliases": [
+        "7.3.23-apache-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-fpm-stretch",
+      "aliases": [
+        "7.3.23-fpm-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.3-zts-stretch",
+      "aliases": [
+        "7.3.23-zts-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2",
+      "aliases": [
+        "7.2-buster",
+        "7.2-cli",
+        "7.2-cli-buster",
+        "7.2.34",
+        "7.2.34-buster",
+        "7.2.34-cli",
+        "7.2.34-cli-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-apache",
+      "aliases": [
+        "7.2-apache-buster",
+        "7.2.34-apache",
+        "7.2.34-apache-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-fpm",
+      "aliases": [
+        "7.2-fpm-buster",
+        "7.2.34-fpm",
+        "7.2.34-fpm-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-zts",
+      "aliases": [
+        "7.2-zts-buster",
+        "7.2.34-zts",
+        "7.2.34-zts-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-cli-stretch",
+      "aliases": [
+        "7.2-stretch",
+        "7.2.34-cli-stretch",
+        "7.2.34-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-apache-stretch",
+      "aliases": [
+        "7.2.34-apache-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-fpm-stretch",
+      "aliases": [
+        "7.2.34-fpm-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7.2-zts-stretch",
+      "aliases": [
+        "7.2.34-zts-stretch"
+      ],
+      "variants": [
+        "node"
+      ]
+    }
+  ]
+}

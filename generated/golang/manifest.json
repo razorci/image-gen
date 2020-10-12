@@ -1,0 +1,40 @@
+{
+  "base": "razorci/golang",
+  "items": [
+    {
+      "tag": "1",
+      "aliases": [
+        "1-buster",
+        "1.15",
+        "1.15-buster",
+        "1.15.2",
+        "1.15.2-buster",
+        "buster",
+        "latest"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1.14",
+      "aliases": [
+        "1.14-buster",
+        "1.14.9",
+        "1.14.9-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1.14-stretch",
+      "aliases": [
+        "1.14.9-stretch"
+      ],
+      "variants": [
+
+      ]
+    }
+  ]
+}

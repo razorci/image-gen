@@ -1,9 +1,11 @@
 
-def write_section(out, key)
+def write_section(out, key, lang, tag)
+  puts "Writing section #{key} for #{lang}-#{tag}"
   case key
   when :docker, "docker"
     out.puts <<~EOL
                # Install Docker
+               ARG DOCKER_GID=999
                RUN set -ex \\
                    && export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.docker.com/linux/static/stable/x86_64/ | grep -o -e 'docker-[.0-9]*\.tgz' | sort -r | head -n 1) \\
                    && DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/${DOCKER_VERSION}" \\
@@ -14,7 +16,8 @@ def write_section(out, key)
                    && mv /tmp/docker/* /usr/bin \\
                    && rm -rf /tmp/docker /tmp/docker.tgz \\
                    && which docker \\
-                   && (docker version || true)
+                   && (docker version || true) \\
+                   && groupadd -g "$DOCKER_GID" -r docker
              EOL
   when "docker-compose", :"docker-compose", "compose", "docker_compose", :"docker_compose"
     out.puts <<~EOL
@@ -35,7 +38,7 @@ def write_section(out, key)
                   ; fi
              EOG
   when :maven, "maven"
-    write_maven(out, /^\d+\.\d+\.\d+$/)
+    write_maven(out, /^\d+\.\d+\.\d+-#{lang}-#{tag}/)
   when :gradle, "gradle"
     write_gradle(out, /^\d+\.\d+$/)
   when :ant, "ant"

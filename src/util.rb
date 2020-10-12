@@ -90,6 +90,7 @@ def write_ci_user(out)
 
              RUN groupadd --gid 2001 #{CI_GROUP} && \\
                  useradd --uid 2001 --gid #{CI_GROUP} --shell #{CI_SHELL} --create-home #{CI_USER} && \\
+                 usermod -a -G sudo,docker #{CI_USER} && \\
                  echo "%#{CI_GROUP} ALL=(root) NOPASSWD:ALL" >>/etc/sudoers
 
              USER #{CI_USER}
@@ -178,7 +179,7 @@ def write_maven(out, version_regex)
   end
 
   out.puts(%Q{USER root})
-  out.puts(%Q{ENV USER_HOME=/home/#{CI_USER} MAVEN_VERSION=#{info.tag}})
+  out.puts(%Q{ENV USER_HOME=/home/#{CI_USER}})
   
   resp.body.each_line do |line|
     next if line =~ /^FROM/
@@ -224,7 +225,7 @@ class DockerTagInfo
 end
 
 def official_lts_reference(lang, tag_regex)
-  path = ["docker-library/official-images", DOCKER_BRANCH,"library", lang].join("/")
+  path = ["docker-library/official-images", DOCKER_BRANCH, "library", lang].join("/")
   resp = Excon.get("https://raw.githubusercontent.com", path: path)
 
   if resp.status >= 300
@@ -268,7 +269,7 @@ def official_lts_reference(lang, tag_regex)
   end
 
   unless (git_commit || any_commit) && directory
-    exit_when("No '#{tag_regex}' tag for #{lang}")
+    exit_with("No '#{tag_regex}' tag for #{lang}")
   end
 
   DockerTagInfo.new(commit: git_commit, directory: directory, tag: tag).tap do |info|

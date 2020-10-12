@@ -4,8 +4,8 @@ base :openjdk
 layers(:docker, :docker_compose, :dockerize)
 user_layers(:maven, :gradle, :ant)
 
-tag_filter /7/, /6/, /jre/, /oracle/
-tag_include_filter /8-jdk/, /stretch/, /buster/
+tag_filter /7/, /6/, /jre/, /oracle/, /ea/
+tag_include_filter /-8-jdk/, /stretch/, /buster/
 
 layer "Update PATH for Java tools", <<~EOL
     ENV PATH="#{SBT_HOME}/bin::#{ANT_HOME}/bin:#{GRADLE_HOME}/bin:$PATH"

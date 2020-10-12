@@ -2,7 +2,7 @@
 base :python
 
 layers(:docker, :docker_compose, :dockerize)
-variants(:node)
+#variants(:node)
 
 layer "Install pipenv and poetry", <<~EOL
     RUN sudo pip install --no-cache pipenv poetry

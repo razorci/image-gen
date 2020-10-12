@@ -18,7 +18,7 @@ and common system libraries needed in a CI environment.
 
 To generate dockerfiles for a language
 
-        rake generate:dockerfile[<lang>] DIRECTORY=/tmp/dockerfiles
+        rake generate:dockerfile[<lang>] DIRECTORY=generated
 
 It would also generate a `manifest.json` while consists the docker image name, it's variants and tags.
 
@@ -35,3 +35,6 @@ The above commands supports following environment variables -
 |`CI`          |     N/A            |  If present, it will push the container images into the docker registry 
 |`DIRECTORY`   |   `dockerfiles`    | The directory path where manifests are generated |
 |`TAGS`        |     `ALL`          | Optionally specify which tags to consider
+|`DOCKER_PUSH` |      N/A           | Push to dockerhub if present
+
+Example: `rake generate:build[ruby] CI=true DOCKER_PUSH=true DIRECTORY=generated TAGS=2`
