@@ -32,7 +32,8 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 ## Install Docker
-ENV DOCKER_VERSION=19.03.9
+ENV DOCKER_VERSION=19.03.13 
+ARG DOCKER_GID=999
 RUN DIR=$(mktemp -d) \
 	&& DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" \
 	&& echo Docker URL: ${DOCKER_URL} \
@@ -42,12 +43,13 @@ RUN DIR=$(mktemp -d) \
 	&& tar -xz -C ${DIR} -f ${DIR}/docker.tgz \
 	&& mv ${DIR}/docker/* /usr/bin \
 	&& rm -rf ${DIR} \
+	&& groupadd -g "$DOCKER_GID" -r docker \
 	&& which docker \
 	&& (docker version || true)
 
 # Install Docker Compose - see prerequisite above
 # Install Compose
-ENV DOCKER_COMPOSE=1.23.2
+ENV DOCKER_COMPOSE=1.27.4
 RUN wget -q \
 	https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
 	&& chmod +x /usr/local/bin/docker-compose \
@@ -62,6 +64,7 @@ RUN curl -sSL --fail --retry 3 --output /tmp/dockerize-linux-amd64.tar.gz "https
 
 RUN useradd --uid=3434 --user-group --create-home razor && \
 	echo 'razor ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-razor && \
+	usermod -a -G sudo,docker razor && \
 	echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
 USER razor

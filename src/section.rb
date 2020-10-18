@@ -22,7 +22,7 @@ def write_section(out, key, lang, tag)
   when "docker-compose", :"docker-compose", "compose", "docker_compose", :"docker_compose"
     out.puts <<~EOL
                # Install Compose
-               ENV DOCKER_COMPOSE=1.23.2
+               ENV DOCKER_COMPOSE=1.27.4
                RUN wget -q \\
                    https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \\
                    && chmod +x /usr/local/bin/docker-compose \\
