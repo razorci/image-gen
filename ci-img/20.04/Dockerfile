@@ -63,8 +63,8 @@ RUN curl -sSL --fail --retry 3 --output /tmp/dockerize-linux-amd64.tar.gz "https
 	dockerize --version
 
 RUN useradd --uid=3434 --user-group --create-home razor && \
-	echo 'razor ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-razor && \
 	usermod -a -G sudo,docker razor && \
+	echo 'razor ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-razor && \
 	echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
 
 USER razor
