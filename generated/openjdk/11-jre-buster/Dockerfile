@@ -61,7 +61,7 @@ RUN set -ex \
     && groupadd -g "$DOCKER_GID" -r docker
 
 # Install Compose
-ENV DOCKER_COMPOSE=1.23.2
+ENV DOCKER_COMPOSE=1.27.4
 RUN wget -q \
     https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
@@ -106,7 +106,7 @@ USER razor
 
 USER root
 
-ENV GRADLE_VERSION=6.6 GRADLE_HOME=/opt/gradle
+ENV GRADLE_VERSION=6.8 GRADLE_HOME=/opt/gradle
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/gradle.zip \
   https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip \
   && unzip -d /opt /tmp/gradle.zip \
@@ -129,12 +129,62 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/apache-
 
 USER razor
 
+USER root
+
+# Install sbt 1.4.1
+ENV SBT_VERSION=1.4.1
+
+RUN if grep -q Debian /etc/os-release; then \
+  curl --silent --show-error --location --fail --retry 3 --output \
+    sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb \
+    && dpkg -i sbt-$SBT_VERSION.deb \
+    && rm sbt-$SBT_VERSION.deb \
+    && apt-get update \
+    && apt-get install sbt \
+  ; fi
+
+USER razor
+
+USER root
+
+ENV LEIN_VERSION=2.9.5 LEIN_INSTALL=/usr/local/bin/
+
+WORKDIR /tmp
+
+# Download the whole repo as an archive
+RUN apt-get update && \
+  apt-get install -y gnupg && \
+  rm -rf /var/lib/apt/lists/* && \
+  mkdir -p $LEIN_INSTALL && \
+  wget -q https://raw.githubusercontent.com/technomancy/leiningen/$LEIN_VERSION/bin/lein-pkg && \
+  echo "Comparing lein-pkg checksum ..." && \
+  sha256sum lein-pkg && \
+  echo "3601d55c4b5ac5c654e4ebd0d75abf7ad683f48cba8a7af1a8730b6590187b8a *lein-pkg" | sha256sum -c - && \
+  mv lein-pkg $LEIN_INSTALL/lein && \
+  chmod 0755 $LEIN_INSTALL/lein && \
+  wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip && \
+  wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip.asc && \
+  gpg --batch --keyserver keys.openpgp.org --recv-key 20242BACBBE95ADA22D0AFD7808A33D379C806C3 &&   echo "Verifying file PGP signature..." && \
+  gpg --batch --verify leiningen-$LEIN_VERSION-standalone.zip.asc leiningen-$LEIN_VERSION-standalone.zip &&   rm leiningen-$LEIN_VERSION-standalone.zip.asc && \
+  mkdir -p /usr/share/java && \
+  mv leiningen-$LEIN_VERSION-standalone.zip /usr/share/java/leiningen-$LEIN_VERSION-standalone.jar &&   apt-get purge -y --auto-remove gnupg
+
+ENV PATH=$PATH:$LEIN_INSTALL
+ENV LEIN_ROOT 1
+
+# Install clojure 1.10.1 so users don't have to download it every time
+RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.10.1"]])' > project.clj   && lein deps && rm project.clj
+  
+USER razor
+
 ## Update PATH for Java tools
 ENV PATH="/opt/sbt/bin::/opt/apache-ant/bin:/opt/gradle/bin:$PATH"
 
 # smoke test with path
 RUN mvn -version \
     && ant -version \
-    && gradle -version
+    && gradle -version \
+    && lein --version
+
 
 CMD ["/bin/sh"]
