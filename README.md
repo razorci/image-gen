@@ -30,9 +30,9 @@ container images
         rake generate:build[<lang>]
 
 The above commands supports following environment variables -
-|   Name       |  Default Value      |      Description                                                |
-|--------------|---------------------|------------------------|
-|`CI`          |     N/A            |  If present, it will push the container images into the docker registry 
+|   Name       |  Default Value     |      Description                                                |
+|--------------|--------------------|------------------------|
+|`CI`          |     N/A            |  If present, it will build the container images 
 |`DIRECTORY`   |   `dockerfiles`    | The directory path where manifests are generated |
 |`TAGS`        |     `ALL`          | Optionally specify which tags to consider
 |`DOCKER_PUSH` |      N/A           | Push to dockerhub if present

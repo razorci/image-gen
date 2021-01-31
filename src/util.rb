@@ -145,15 +145,74 @@ def write_ant(out, version_regex)
   EOL
 end
 
-def write_sbt(out)
-  tag = SBT_VERSION
+def write_lein(out, tag)
+  lein_tag = case tag.strip
+  when /^[8]/, /^[9]/, /^[11]/
+    "2.9.5"
+  when /^[16]/, /^[17]/
+    "2.9.5"
+  end
+
+  exit_with("No compatible lein version found for tag: '#{tag}'") unless lein_tag
+
+  out.puts <<~EOL
+    USER root
+
+    ENV LEIN_VERSION=#{lein_tag} LEIN_INSTALL=/usr/local/bin/
+
+    WORKDIR /tmp
+
+    # Download the whole repo as an archive
+    RUN apt-get update && \\
+      apt-get install -y gnupg && \\
+      rm -rf /var/lib/apt/lists/* && \\
+      mkdir -p $LEIN_INSTALL && \\
+      wget -q https://raw.githubusercontent.com/technomancy/leiningen/$LEIN_VERSION/bin/lein-pkg && \\
+      echo "Comparing lein-pkg checksum ..." && \\
+      sha256sum lein-pkg && \\
+      echo "3601d55c4b5ac5c654e4ebd0d75abf7ad683f48cba8a7af1a8730b6590187b8a *lein-pkg" | sha256sum -c - && \\
+      mv lein-pkg $LEIN_INSTALL/lein && \\
+      chmod 0755 $LEIN_INSTALL/lein && \\
+      wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip && \\
+      wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip.asc && \\
+      gpg --batch --keyserver keys.openpgp.org --recv-key 20242BACBBE95ADA22D0AFD7808A33D379C806C3 && \
+      echo "Verifying file PGP signature..." && \\
+      gpg --batch --verify leiningen-$LEIN_VERSION-standalone.zip.asc leiningen-$LEIN_VERSION-standalone.zip && \
+      rm leiningen-$LEIN_VERSION-standalone.zip.asc && \\
+      mkdir -p /usr/share/java && \\
+      mv leiningen-$LEIN_VERSION-standalone.zip /usr/share/java/leiningen-$LEIN_VERSION-standalone.jar && \
+      apt-get purge -y --auto-remove gnupg
+
+    ENV PATH=$PATH:$LEIN_INSTALL
+    ENV LEIN_ROOT 1
+
+    # Install clojure 1.10.1 so users don't have to download it every time
+    RUN echo '(defproject dummy "" :dependencies [[org.clojure/clojure "1.10.1"]])' > project.clj \
+      && lein deps && rm project.clj
+      
+    USER #{CI_USER}
+  EOL
+end
+
+def write_sbt(out, tag)
+  sbt_tag = case tag.strip
+  when /^[8]/
+    "0.13.15"
+  when /^[9]/
+    "1.0.4"
+  when /^[11]/, /^[16]/, /^17/
+    "1.4.1"
+  end
+
+  exit_with("No compatible sbt version found for tag: '#{tag}'") unless sbt_tag
+
   ## detect java version https://stackoverflow.com/questions/7334754/correct-way-to-check-java-version-from-bash-script
   
   out.puts <<~EOL
     USER root
 
-    # Install sbt #{SBT_VERSION}
-    ENV SBT_VERSION=#{SBT_VERSION}
+    # Install sbt #{sbt_tag}
+    ENV SBT_VERSION=#{sbt_tag}
 
     RUN if grep -q Debian /etc/os-release; then \\
       curl --silent --show-error --location --fail --retry 3 --output \\
@@ -162,7 +221,6 @@ def write_sbt(out)
         && rm sbt-$SBT_VERSION.deb \\
         && apt-get update \\
         && apt-get install sbt \\
-        && sbt sbtVersion \\
       ; fi
 
     USER #{CI_USER}
@@ -171,6 +229,7 @@ end
 
 def write_maven(out, version_regex)
   info = official_lts_reference("maven", version_regex)
+  return if info.nil?
   return unless info.have_commit_directory?
 
   resp = Excon.get("https://raw.githubusercontent.com", path: info.dockerfile_url)
@@ -227,6 +286,7 @@ end
 def official_lts_reference(lang, tag_regex)
   path = ["docker-library/official-images", DOCKER_BRANCH, "library", lang].join("/")
   resp = Excon.get("https://raw.githubusercontent.com", path: path)
+  raw_github_url = "https://raw.githubusercontent.com/#{path}"
 
   if resp.status >= 300
     exit_excon("fetching #{tag_regex} tag for #{lang}", resp)
@@ -269,7 +329,12 @@ def official_lts_reference(lang, tag_regex)
   end
 
   unless (git_commit || any_commit) && directory
-    exit_with("No '#{tag_regex}' tag for #{lang}")
+    # ignore errors for maven if openjdk tags are not found
+    if lang == "maven"
+      return
+    end
+
+    exit_with("No '#{tag_regex}' tag for #{lang} in #{raw_github_url}")
   end
 
   DockerTagInfo.new(commit: git_commit, directory: directory, tag: tag).tap do |info|

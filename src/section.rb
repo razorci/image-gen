@@ -44,7 +44,9 @@ def write_section(out, key, lang, tag)
   when :ant, "ant"
     write_ant(out, /^\d+\.\d+\.\d+$/)
   when :sbt, "sbt"
-    write_sbt(out)
+    write_sbt(out, tag)
+  when :lein, "lein"
+    write_lein(out, tag)  
   else
     puts "Unsupported section: #{key}"
   end
