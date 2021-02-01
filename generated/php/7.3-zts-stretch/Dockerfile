@@ -61,7 +61,7 @@ RUN set -ex \
     && groupadd -g "$DOCKER_GID" -r docker
 
 # Install Compose
-ENV DOCKER_COMPOSE=1.23.2
+ENV DOCKER_COMPOSE=1.27.4
 RUN wget -q \
     https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \

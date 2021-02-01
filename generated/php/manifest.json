@@ -2,6 +2,74 @@
   "base": "razorci/php",
   "items": [
     {
+      "tag": "8",
+      "aliases": [
+        "8-buster",
+        "8-cli",
+        "8-cli-buster",
+        "8.0",
+        "8.0-buster",
+        "8.0-cli",
+        "8.0-cli-buster",
+        "8.0.1",
+        "8.0.1-buster",
+        "8.0.1-cli",
+        "8.0.1-cli-buster",
+        "buster",
+        "cli",
+        "cli-buster",
+        "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8-apache",
+      "aliases": [
+        "8-apache-buster",
+        "8.0-apache",
+        "8.0-apache-buster",
+        "8.0.1-apache",
+        "8.0.1-apache-buster",
+        "apache",
+        "apache-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8-fpm",
+      "aliases": [
+        "8-fpm-buster",
+        "8.0-fpm",
+        "8.0-fpm-buster",
+        "8.0.1-fpm",
+        "8.0.1-fpm-buster",
+        "fpm",
+        "fpm-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8-zts",
+      "aliases": [
+        "8-zts-buster",
+        "8.0-zts",
+        "8.0-zts-buster",
+        "8.0.1-zts",
+        "8.0.1-zts-buster",
+        "zts",
+        "zts-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
       "tag": "7",
       "aliases": [
         "7-buster",
@@ -11,14 +79,10 @@
         "7.4-buster",
         "7.4-cli",
         "7.4-cli-buster",
-        "7.4.11",
-        "7.4.11-buster",
-        "7.4.11-cli",
-        "7.4.11-cli-buster",
-        "buster",
-        "cli",
-        "cli-buster",
-        "latest"
+        "7.4.14",
+        "7.4.14-buster",
+        "7.4.14-cli",
+        "7.4.14-cli-buster"
       ],
       "variants": [
         "node"
@@ -30,10 +94,8 @@
         "7-apache-buster",
         "7.4-apache",
         "7.4-apache-buster",
-        "7.4.11-apache",
-        "7.4.11-apache-buster",
-        "apache",
-        "apache-buster"
+        "7.4.14-apache",
+        "7.4.14-apache-buster"
       ],
       "variants": [
         "node"
@@ -45,10 +107,8 @@
         "7-fpm-buster",
         "7.4-fpm",
         "7.4-fpm-buster",
-        "7.4.11-fpm",
-        "7.4.11-fpm-buster",
-        "fpm",
-        "fpm-buster"
+        "7.4.14-fpm",
+        "7.4.14-fpm-buster"
       ],
       "variants": [
         "node"
@@ -60,10 +120,8 @@
         "7-zts-buster",
         "7.4-zts",
         "7.4-zts-buster",
-        "7.4.11-zts",
-        "7.4.11-zts-buster",
-        "zts",
-        "zts-buster"
+        "7.4.14-zts",
+        "7.4.14-zts-buster"
       ],
       "variants": [
         "node"
@@ -75,10 +133,10 @@
         "7.3-buster",
         "7.3-cli",
         "7.3-cli-buster",
-        "7.3.23",
-        "7.3.23-buster",
-        "7.3.23-cli",
-        "7.3.23-cli-buster"
+        "7.3.26",
+        "7.3.26-buster",
+        "7.3.26-cli",
+        "7.3.26-cli-buster"
       ],
       "variants": [
         "node"
@@ -88,8 +146,8 @@
       "tag": "7.3-apache",
       "aliases": [
         "7.3-apache-buster",
-        "7.3.23-apache",
-        "7.3.23-apache-buster"
+        "7.3.26-apache",
+        "7.3.26-apache-buster"
       ],
       "variants": [
         "node"
@@ -99,8 +157,8 @@
       "tag": "7.3-fpm",
       "aliases": [
         "7.3-fpm-buster",
-        "7.3.23-fpm",
-        "7.3.23-fpm-buster"
+        "7.3.26-fpm",
+        "7.3.26-fpm-buster"
       ],
       "variants": [
         "node"
@@ -110,8 +168,8 @@
       "tag": "7.3-zts",
       "aliases": [
         "7.3-zts-buster",
-        "7.3.23-zts",
-        "7.3.23-zts-buster"
+        "7.3.26-zts",
+        "7.3.26-zts-buster"
       ],
       "variants": [
         "node"
@@ -121,8 +179,8 @@
       "tag": "7.3-cli-stretch",
       "aliases": [
         "7.3-stretch",
-        "7.3.23-cli-stretch",
-        "7.3.23-stretch"
+        "7.3.26-cli-stretch",
+        "7.3.26-stretch"
       ],
       "variants": [
         "node"
@@ -131,7 +189,7 @@
     {
       "tag": "7.3-apache-stretch",
       "aliases": [
-        "7.3.23-apache-stretch"
+        "7.3.26-apache-stretch"
       ],
       "variants": [
         "node"
@@ -140,7 +198,7 @@
     {
       "tag": "7.3-fpm-stretch",
       "aliases": [
-        "7.3.23-fpm-stretch"
+        "7.3.26-fpm-stretch"
       ],
       "variants": [
         "node"
@@ -149,93 +207,7 @@
     {
       "tag": "7.3-zts-stretch",
       "aliases": [
-        "7.3.23-zts-stretch"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2",
-      "aliases": [
-        "7.2-buster",
-        "7.2-cli",
-        "7.2-cli-buster",
-        "7.2.34",
-        "7.2.34-buster",
-        "7.2.34-cli",
-        "7.2.34-cli-buster"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-apache",
-      "aliases": [
-        "7.2-apache-buster",
-        "7.2.34-apache",
-        "7.2.34-apache-buster"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-fpm",
-      "aliases": [
-        "7.2-fpm-buster",
-        "7.2.34-fpm",
-        "7.2.34-fpm-buster"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-zts",
-      "aliases": [
-        "7.2-zts-buster",
-        "7.2.34-zts",
-        "7.2.34-zts-buster"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-cli-stretch",
-      "aliases": [
-        "7.2-stretch",
-        "7.2.34-cli-stretch",
-        "7.2.34-stretch"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-apache-stretch",
-      "aliases": [
-        "7.2.34-apache-stretch"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-fpm-stretch",
-      "aliases": [
-        "7.2.34-fpm-stretch"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7.2-zts-stretch",
-      "aliases": [
-        "7.2.34-zts-stretch"
+        "7.3.26-zts-stretch"
       ],
       "variants": [
         "node"

@@ -2,13 +2,24 @@
   "base": "razorci/node",
   "items": [
     {
-      "tag": "14",
+      "tag": "15-buster",
       "aliases": [
-        "14-stretch",
-        "14.12",
-        "14.12-stretch",
-        "14.12.0",
-        "14.12.0-stretch",
+        "15.7-buster",
+        "15.7.0-buster",
+        "buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "15",
+      "aliases": [
+        "15-stretch",
+        "15.7",
+        "15.7-stretch",
+        "15.7.0",
+        "15.7.0-stretch",
         "latest",
         "stretch"
       ],
@@ -19,24 +30,25 @@
     {
       "tag": "14-buster",
       "aliases": [
-        "14.12-buster",
-        "14.12.0-buster",
-        "buster"
+        "14.15-buster",
+        "14.15.4-buster",
+        "fermium-buster",
+        "lts-buster"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "12",
+      "tag": "14",
       "aliases": [
-        "12-stretch",
-        "12.18",
-        "12.18-stretch",
-        "12.18.4",
-        "12.18.4-stretch",
-        "erbium",
-        "erbium-stretch",
+        "14-stretch",
+        "14.15",
+        "14.15-stretch",
+        "14.15.4",
+        "14.15.4-stretch",
+        "fermium",
+        "fermium-stretch",
         "lts",
         "lts-stretch"
       ],
@@ -47,10 +59,35 @@
     {
       "tag": "12-buster",
       "aliases": [
-        "12.18-buster",
-        "12.18.4-buster",
-        "erbium-buster",
-        "lts-buster"
+        "12.20-buster",
+        "12.20.1-buster",
+        "erbium-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "12",
+      "aliases": [
+        "12-stretch",
+        "12.20",
+        "12.20-stretch",
+        "12.20.1",
+        "12.20.1-stretch",
+        "erbium",
+        "erbium-stretch"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "10-buster",
+      "aliases": [
+        "10.23-buster",
+        "10.23.2-buster",
+        "dubnium-buster"
       ],
       "variants": [
 
@@ -60,23 +97,12 @@
       "tag": "10",
       "aliases": [
         "10-stretch",
-        "10.22",
-        "10.22-stretch",
-        "10.22.1",
-        "10.22.1-stretch",
+        "10.23",
+        "10.23-stretch",
+        "10.23.2",
+        "10.23.2-stretch",
         "dubnium",
         "dubnium-stretch"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "10-buster",
-      "aliases": [
-        "10.22-buster",
-        "10.22.1-buster",
-        "dubnium-buster"
       ],
       "variants": [
 
