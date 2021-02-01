@@ -1,5 +1,5 @@
 
 base :elixir
+tag_filter /otp/
 layers(:docker, :docker_compose, :dockerize)
 variants(:node)
-

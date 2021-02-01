@@ -1,0 +1,60 @@
+{
+  "base": "razorci/elixir",
+  "items": [
+    {
+      "tag": "1.11",
+      "aliases": [
+        "1.11.3",
+        "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.10",
+      "aliases": [
+        "1.10.4"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.9",
+      "aliases": [
+        "1.9.4"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.8",
+      "aliases": [
+        "1.8.2"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.7",
+      "aliases": [
+        "1.7.4"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.6",
+      "aliases": [
+        "1.6.6"
+      ],
+      "variants": [
+        "node"
+      ]
+    }
+  ]
+}
