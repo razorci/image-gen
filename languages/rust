@@ -1,0 +1,4 @@
+
+base :rust
+
+layers(:docker, :docker_compose, :dockerize)
