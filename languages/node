@@ -4,3 +4,5 @@ base :node
 layers(:docker, :docker_compose, :dockerize)
 
 tag_filter /chakracore-8.11.1/, /current/
+
+write_readme("NodeJS")

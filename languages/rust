@@ -2,3 +2,5 @@
 base :rust
 
 layers(:docker, :docker_compose, :dockerize)
+
+write_readme("Rust")

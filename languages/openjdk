@@ -17,3 +17,5 @@ layer "Update PATH for Java tools", <<~EOL
         && lein --version
 
 EOL
+
+write_readme("OpenJDK")

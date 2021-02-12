@@ -8,3 +8,5 @@ layer "Instal gotestsum", <<~EOL
     RUN curl -sSL https://github.com/gotestyourself/gotestsum/releases/download/v0.4.2/gotestsum_0.4.2_linux_amd64.tar.gz | \\
         tar -xz -C $GOPATH/bin gotestsum
 EOL
+
+write_readme("GO")

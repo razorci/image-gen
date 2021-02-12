@@ -7,3 +7,4 @@ layers(:docker,
 )
 
 variants(:node)
+write_readme("Ruby")

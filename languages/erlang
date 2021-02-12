@@ -2,4 +2,5 @@
 base :erlang
 layers(:docker, :docker_compose, :dockerize)
 variants(:node)
+write_readme("Erlang")
 
