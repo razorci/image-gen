@@ -3,6 +3,7 @@ require "json"
 
 require_relative "util"
 require_relative "section"
+require_relative "erbalt"
 
 class Generator
   attr_accessor :language
@@ -21,7 +22,19 @@ class Generator
     @tag_filter = @tag_include_filter = []
   end
 
-  def run()
+  def write_readme(lang_desc)
+    exit_with("No :base set for #{self.language}") unless @base
+    puts "Generating README.md for #{self.language}:"
+    path = File.join(self.output_dir, self.language, "README.md")
+    template_path = File.read("src/README.dockerhub.md")
+
+    File.open(path, "w") do |f|
+      rnd = ErbalT.new({ lang_code: self.language, language: lang_desc })
+      f.write(rnd.render(template_path))
+    end
+  end
+
+  def run
     exit_with("No :base set for #{self.language}") unless @base
 
     puts "Generating manifest for #{self.language}:"
@@ -33,10 +46,10 @@ class Generator
       out, tag = StringIO.new, aliases.shift
 
       puts "Found tags: #{tag} #{aliases}"
-      
+
       section_tag = tag
       if language == "openjdk"
-        matches = tag.match(/^(\d+)-/) 
+        matches = tag.match(/^(\d+)-/)
         if matches
           section_tag = matches[1]
         end
@@ -223,7 +236,7 @@ module BuildDocker
       end
 
       next unless File.directory?(path)
-      
+
       Dir.chdir(path) do
         aliases = File.read("ALIASES").split(",").map(&:strip) rescue []
         image = File.read("IMAGE").strip

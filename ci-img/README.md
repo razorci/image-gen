@@ -20,7 +20,7 @@ To execute the jobs in a custom build environment, you need to assign `runner` p
 tasks:
   unit-test:
     # any container image having required tools installed
-    runner: razorci/img:20.04
+    runner: razorci/img:2004-v2
     steps:
     - echo hello world
 ```
