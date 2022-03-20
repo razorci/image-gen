@@ -2,14 +2,25 @@
   "base": "razorci/rust",
   "items": [
     {
+      "tag": "1-buster",
+      "aliases": [
+        "1.59-buster",
+        "1.59.0-buster",
+        "buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
       "tag": "1",
       "aliases": [
-        "1-buster",
-        "1.49",
-        "1.49-buster",
-        "1.49.0",
-        "1.49.0-buster",
-        "buster",
+        "1-bullseye",
+        "1.59",
+        "1.59-bullseye",
+        "1.59.0",
+        "1.59.0-bullseye",
+        "bullseye",
         "latest"
       ],
       "variants": [

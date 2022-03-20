@@ -4,12 +4,12 @@
     {
       "tag": "1",
       "aliases": [
-        "1-buster",
-        "1.15",
-        "1.15-buster",
-        "1.15.7",
-        "1.15.7-buster",
-        "buster",
+        "1-bullseye",
+        "1.17",
+        "1.17-bullseye",
+        "1.17.8",
+        "1.17.8-bullseye",
+        "bullseye",
         "latest"
       ],
       "variants": [
@@ -17,20 +17,51 @@
       ]
     },
     {
-      "tag": "1.14",
+      "tag": "1-buster",
       "aliases": [
-        "1.14-buster",
-        "1.14.14",
-        "1.14.14-buster"
+        "1.17-buster",
+        "1.17.8-buster",
+        "buster"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "1.14-stretch",
+      "tag": "1-stretch",
       "aliases": [
-        "1.14.14-stretch"
+        "1.17-stretch",
+        "1.17.8-stretch",
+        "stretch"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1.16",
+      "aliases": [
+        "1.16-bullseye",
+        "1.16.15",
+        "1.16.15-bullseye"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1.16-buster",
+      "aliases": [
+        "1.16.15-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1.16-stretch",
+      "aliases": [
+        "1.16.15-stretch"
       ],
       "variants": [
 

@@ -2,10 +2,28 @@
   "base": "razorci/elixir",
   "items": [
     {
+      "tag": "1.13",
+      "aliases": [
+        "1.13.3",
+        "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "1.12",
+      "aliases": [
+        "1.12.3"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
       "tag": "1.11",
       "aliases": [
-        "1.11.3",
-        "latest"
+        "1.11.4"
       ],
       "variants": [
         "node"

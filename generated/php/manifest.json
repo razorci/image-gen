@@ -2,23 +2,104 @@
   "base": "razorci/php",
   "items": [
     {
+      "tag": "8.1.4RC1",
+      "aliases": [
+        "8.1.4RC1-bullseye",
+        "8.1.4RC1-cli",
+        "8.1.4RC1-cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.1.4RC1-buster",
+      "aliases": [
+        "8.1.4RC1-cli-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
       "tag": "8",
       "aliases": [
-        "8-buster",
+        "8-bullseye",
         "8-cli",
-        "8-cli-buster",
-        "8.0",
-        "8.0-buster",
-        "8.0-cli",
-        "8.0-cli-buster",
-        "8.0.2",
-        "8.0.2-buster",
-        "8.0.2-cli",
-        "8.0.2-cli-buster",
-        "buster",
+        "8-cli-bullseye",
+        "8.1",
+        "8.1-bullseye",
+        "8.1-cli",
+        "8.1-cli-bullseye",
+        "8.1.3",
+        "8.1.3-bullseye",
+        "8.1.3-cli",
+        "8.1.3-cli-bullseye",
+        "bullseye",
         "cli",
-        "cli-buster",
+        "cli-bullseye",
         "latest"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8-buster",
+      "aliases": [
+        "8-cli-buster",
+        "8.1-buster",
+        "8.1-cli-buster",
+        "8.1.3-buster",
+        "8.1.3-cli-buster",
+        "buster",
+        "cli-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.0.17RC1",
+      "aliases": [
+        "8.0.17RC1-bullseye",
+        "8.0.17RC1-cli",
+        "8.0.17RC1-cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.0.17RC1-buster",
+      "aliases": [
+        "8.0.17RC1-cli-buster"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.0",
+      "aliases": [
+        "8.0-bullseye",
+        "8.0-cli",
+        "8.0-cli-bullseye",
+        "8.0.16",
+        "8.0.16-bullseye",
+        "8.0.16-cli",
+        "8.0.16-cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.0-buster",
+      "aliases": [
+        "8.0-cli-buster",
+        "8.0.16-buster",
+        "8.0.16-cli-buster"
       ],
       "variants": [
         "node"
@@ -27,17 +108,30 @@
     {
       "tag": "7",
       "aliases": [
-        "7-buster",
+        "7-bullseye",
         "7-cli",
-        "7-cli-buster",
+        "7-cli-bullseye",
         "7.4",
-        "7.4-buster",
+        "7.4-bullseye",
         "7.4-cli",
+        "7.4-cli-bullseye",
+        "7.4.28",
+        "7.4.28-bullseye",
+        "7.4.28-cli",
+        "7.4.28-cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "7-buster",
+      "aliases": [
+        "7-cli-buster",
+        "7.4-buster",
         "7.4-cli-buster",
-        "7.4.15",
-        "7.4.15-buster",
-        "7.4.15-cli",
-        "7.4.15-cli-buster"
+        "7.4.28-buster",
+        "7.4.28-cli-buster"
       ],
       "variants": [
         "node"
@@ -46,24 +140,24 @@
     {
       "tag": "7.3",
       "aliases": [
-        "7.3-buster",
+        "7.3-bullseye",
         "7.3-cli",
-        "7.3-cli-buster",
-        "7.3.27",
-        "7.3.27-buster",
-        "7.3.27-cli",
-        "7.3.27-cli-buster"
+        "7.3-cli-bullseye",
+        "7.3.33",
+        "7.3.33-bullseye",
+        "7.3.33-cli",
+        "7.3.33-cli-bullseye"
       ],
       "variants": [
         "node"
       ]
     },
     {
-      "tag": "7.3-cli-stretch",
+      "tag": "7.3-buster",
       "aliases": [
-        "7.3-stretch",
-        "7.3.27-cli-stretch",
-        "7.3.27-stretch"
+        "7.3-cli-buster",
+        "7.3.33-buster",
+        "7.3.33-cli-buster"
       ],
       "variants": [
         "node"
