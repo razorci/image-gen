@@ -27,7 +27,7 @@ It would also generate a `manifest.json` while consists the docker image name, i
 Step2 will generate various manifest files along with dockerfiles for the latest versions/tags. To build the customized
 container images 
 
-        rake generate:build[<lang>]
+        rake generate:build[<lang>] DIRECTORY=generated
 
 The above commands supports following environment variables -
 |   Name       |  Default Value     |      Description                                                |
@@ -38,3 +38,12 @@ The above commands supports following environment variables -
 |`DOCKER_PUSH` |      N/A           | Push to dockerhub if present
 
 Example: `rake generate:build[ruby] CI=true DOCKER_PUSH=true DIRECTORY=generated TAGS=2`
+
+### Updating base image
+
+Please follow [ci-img](./ci-img/README.md) README for upgrading.
+### Updating dependencies in language runtimes
+
+We also add few dependencies along with standard language tooling - docker, docker-compose, git. You might want to change the versions before re-generating the Dockerfile(s).
+
+For `nodejs` variants, we fetch the lts version from the github (nodejs) and try to infer the extracted version.

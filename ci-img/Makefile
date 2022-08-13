@@ -1,5 +1,5 @@
 IMAGE_NAME ?= razorci/img
-IMAGE_TAG=2004-v2
+IMAGE_TAG=2004-v3
 
 # docker image publishing options
 DOCKER_PUSH=false

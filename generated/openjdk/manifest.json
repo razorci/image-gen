@@ -2,39 +2,64 @@
   "base": "razorci/openjdk",
   "items": [
     {
-      "tag": "17-buster",
+      "tag": "20-bullseye",
       "aliases": [
-        "17-ea-6-buster",
-        "17-ea-6-jdk-buster",
-        "17-ea-buster",
-        "17-ea-jdk-buster",
-        "17-jdk-buster"
+        "20-jdk-bullseye"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "16-buster",
+      "tag": "20-buster",
       "aliases": [
-        "16-ea-33-buster",
-        "16-ea-33-jdk-buster",
-        "16-ea-buster",
-        "16-ea-jdk-buster",
-        "16-jdk-buster"
+        "20-jdk-buster"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "15-buster",
+      "tag": "19-bullseye",
       "aliases": [
-        "15-jdk-buster",
-        "15.0-buster",
-        "15.0-jdk-buster",
-        "15.0.2-buster",
-        "15.0.2-jdk-buster",
+        "19-jdk-bullseye"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "19-buster",
+      "aliases": [
+        "19-jdk-buster"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "18-bullseye",
+      "aliases": [
+        "18-jdk-bullseye",
+        "18.0-bullseye",
+        "18.0-jdk-bullseye",
+        "18.0.2-bullseye",
+        "18.0.2-jdk-bullseye",
+        "bullseye",
+        "jdk-bullseye"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "18-buster",
+      "aliases": [
+        "18-jdk-buster",
+        "18.0-buster",
+        "18.0-jdk-buster",
+        "18.0.2-buster",
+        "18.0.2-jdk-buster",
         "buster",
         "jdk-buster"
       ],
@@ -45,27 +70,26 @@
     {
       "tag": "11",
       "aliases": [
-        "11-buster",
+        "11-bullseye",
         "11-jdk",
-        "11-jdk-buster",
+        "11-jdk-bullseye",
         "11.0",
-        "11.0-buster",
+        "11.0-bullseye",
         "11.0-jdk",
-        "11.0-jdk-buster",
-        "11.0.10",
-        "11.0.10-buster",
-        "11.0.10-jdk",
-        "11.0.10-jdk-buster"
+        "11.0-jdk-bullseye",
+        "11.0.16-bullseye"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "11-jre-buster",
+      "tag": "11-buster",
       "aliases": [
-        "11.0-jre-buster",
-        "11.0.10-jre-buster"
+        "11-jdk-buster",
+        "11.0-buster",
+        "11.0-jdk-buster",
+        "11.0.16-buster"
       ],
       "variants": [
 
@@ -74,22 +98,24 @@
     {
       "tag": "8",
       "aliases": [
-        "8-buster",
+        "8-bullseye",
         "8-jdk",
-        "8-jdk-buster",
-        "8u282",
-        "8u282-buster",
-        "8u282-jdk",
-        "8u282-jdk-buster"
+        "8-jdk-bullseye",
+        "8u342",
+        "8u342-bullseye",
+        "8u342-jdk",
+        "8u342-jdk-bullseye"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "8-jre-buster",
+      "tag": "8-buster",
       "aliases": [
-        "8u282-jre-buster"
+        "8-jdk-buster",
+        "8u342-buster",
+        "8u342-jdk-buster"
       ],
       "variants": [
 

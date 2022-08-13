@@ -2,31 +2,13 @@
   "base": "razorci/python",
   "items": [
     {
-      "tag": "3.11.0a5",
-      "aliases": [
-        "3.11.0a5-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.11.0a5-buster",
-      "aliases": [
-
-      ],
-      "variants": [
-
-      ]
-    },
-    {
       "tag": "3",
       "aliases": [
         "3-bullseye",
         "3.10",
         "3.10-bullseye",
-        "3.10.2",
-        "3.10.2-bullseye",
+        "3.10.6",
+        "3.10.6-bullseye",
         "bullseye",
         "latest"
       ],
@@ -38,7 +20,7 @@
       "tag": "3-buster",
       "aliases": [
         "3.10-buster",
-        "3.10.2-buster",
+        "3.10.6-buster",
         "buster"
       ],
       "variants": [
@@ -49,8 +31,8 @@
       "tag": "3.9",
       "aliases": [
         "3.9-bullseye",
-        "3.9.10",
-        "3.9.10-bullseye"
+        "3.9.13",
+        "3.9.13-bullseye"
       ],
       "variants": [
 
@@ -59,7 +41,7 @@
     {
       "tag": "3.9-buster",
       "aliases": [
-        "3.9.10-buster"
+        "3.9.13-buster"
       ],
       "variants": [
 
@@ -69,8 +51,8 @@
       "tag": "3.8",
       "aliases": [
         "3.8-bullseye",
-        "3.8.12",
-        "3.8.12-bullseye"
+        "3.8.13",
+        "3.8.13-bullseye"
       ],
       "variants": [
 
@@ -79,7 +61,7 @@
     {
       "tag": "3.8-buster",
       "aliases": [
-        "3.8.12-buster"
+        "3.8.13-buster"
       ],
       "variants": [
 
@@ -89,8 +71,8 @@
       "tag": "3.7",
       "aliases": [
         "3.7-bullseye",
-        "3.7.12",
-        "3.7.12-bullseye"
+        "3.7.13",
+        "3.7.13-bullseye"
       ],
       "variants": [
 
@@ -99,7 +81,7 @@
     {
       "tag": "3.7-buster",
       "aliases": [
-        "3.7.12-buster"
+        "3.7.13-buster"
       ],
       "variants": [
 

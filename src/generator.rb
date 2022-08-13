@@ -38,7 +38,8 @@ class Generator
     exit_with("No :base set for #{self.language}") unless @base
 
     puts "Generating manifest for #{self.language}:"
-    FileUtils.rmdir(File.join(self.output_dir, self.language)) rescue nil
+    FileUtils.rm_rf(File.join(self.output_dir, self.language))
+
     image_base = "#{DOCKER_REPO}/#{self.language}"
     manifest = { base: image_base, items: [] }
 

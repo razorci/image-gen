@@ -2,9 +2,18 @@
   "base": "razorci/elixir",
   "items": [
     {
+      "tag": "1.14",
+      "aliases": [
+
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
       "tag": "1.13",
       "aliases": [
-        "1.13.3",
+        "1.13.4",
         "latest"
       ],
       "variants": [
@@ -60,15 +69,6 @@
       "tag": "1.7",
       "aliases": [
         "1.7.4"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.6",
-      "aliases": [
-        "1.6.6"
       ],
       "variants": [
         "node"

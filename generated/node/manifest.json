@@ -2,13 +2,13 @@
   "base": "razorci/node",
   "items": [
     {
-      "tag": "17",
+      "tag": "18",
       "aliases": [
-        "17-bullseye",
-        "17.6",
-        "17.6-bullseye",
-        "17.6.0",
-        "17.6.0-bullseye",
+        "18-bullseye",
+        "18.7",
+        "18.7-bullseye",
+        "18.7.0",
+        "18.7.0-bullseye",
         "bullseye",
         "latest"
       ],
@@ -17,22 +17,11 @@
       ]
     },
     {
-      "tag": "17-buster",
+      "tag": "18-buster",
       "aliases": [
-        "17.6-buster",
-        "17.6.0-buster",
+        "18.7-buster",
+        "18.7.0-buster",
         "buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "17-stretch",
-      "aliases": [
-        "17.6-stretch",
-        "17.6.0-stretch",
-        "stretch"
       ],
       "variants": [
 
@@ -41,8 +30,8 @@
     {
       "tag": "16-bullseye",
       "aliases": [
-        "16.14-bullseye",
-        "16.14.0-bullseye",
+        "16.16-bullseye",
+        "16.16.0-bullseye",
         "gallium-bullseye",
         "lts-bullseye"
       ],
@@ -54,10 +43,10 @@
       "tag": "16",
       "aliases": [
         "16-buster",
-        "16.14",
-        "16.14-buster",
-        "16.14.0",
-        "16.14.0-buster",
+        "16.16",
+        "16.16-buster",
+        "16.16.0",
+        "16.16.0-buster",
         "gallium",
         "gallium-buster",
         "lts",
@@ -69,34 +58,11 @@
       ]
     },
     {
-      "tag": "16-stretch",
-      "aliases": [
-        "16.14-stretch",
-        "16.14.0-stretch",
-        "gallium-stretch",
-        "lts-stretch"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
       "tag": "14-bullseye",
       "aliases": [
-        "14.19-bullseye",
-        "14.19.0-bullseye",
+        "14.20-bullseye",
+        "14.20.0-bullseye",
         "fermium-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "14-buster",
-      "aliases": [
-        "14.19-buster",
-        "14.19.0-buster",
-        "fermium-buster"
       ],
       "variants": [
 
@@ -105,50 +71,13 @@
     {
       "tag": "14",
       "aliases": [
-        "14-stretch",
-        "14.19",
-        "14.19-stretch",
-        "14.19.0",
-        "14.19.0-stretch",
+        "14-buster",
+        "14.20",
+        "14.20-buster",
+        "14.20.0",
+        "14.20.0-buster",
         "fermium",
-        "fermium-stretch"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "12-bullseye",
-      "aliases": [
-        "12.22-bullseye",
-        "12.22.10-bullseye",
-        "erbium-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "12-buster",
-      "aliases": [
-        "12.22-buster",
-        "12.22.10-buster",
-        "erbium-buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "12",
-      "aliases": [
-        "12-stretch",
-        "12.22",
-        "12.22-stretch",
-        "12.22.10",
-        "12.22.10-stretch",
-        "erbium",
-        "erbium-stretch"
+        "fermium-buster"
       ],
       "variants": [
 

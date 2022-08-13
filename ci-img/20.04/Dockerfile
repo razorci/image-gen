@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 ## Install Docker
-ENV DOCKER_VERSION=19.03.13 
+ENV DOCKER_VERSION=20.10.9
 ARG DOCKER_GID=999
 RUN DIR=$(mktemp -d) \
 	&& DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" \
@@ -49,7 +49,7 @@ RUN DIR=$(mktemp -d) \
 
 # Install Docker Compose - see prerequisite above
 # Install Compose
-ENV DOCKER_COMPOSE=1.27.4
+ENV DOCKER_COMPOSE=1.29.2
 RUN wget -q \
 	https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
 	&& chmod +x /usr/local/bin/docker-compose \

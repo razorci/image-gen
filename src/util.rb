@@ -146,11 +146,15 @@ def write_ant(out, version_regex)
 end
 
 def write_lein(out, tag)
+  # https://codeberg.org/leiningen/leiningen/tags
+  
   lein_tag = case tag.strip
   when /^[8]/, /^[9]/, /^[11]/
     "2.9.5"
   when /^[16]/, /^[17]/
     "2.9.5"
+  when /^[20]/
+    "2.9.10"
   end
 
   exit_with("No compatible lein version found for tag: '#{tag}'") unless lein_tag
@@ -159,30 +163,11 @@ def write_lein(out, tag)
     USER root
 
     ENV LEIN_VERSION=#{lein_tag} LEIN_INSTALL=/usr/local/bin/
-
-    WORKDIR /tmp
-
-    # Download the whole repo as an archive
-    RUN apt-get update && \\
-      apt-get install -y gnupg && \\
-      rm -rf /var/lib/apt/lists/* && \\
-      mkdir -p $LEIN_INSTALL && \\
-      wget -q https://raw.githubusercontent.com/technomancy/leiningen/$LEIN_VERSION/bin/lein-pkg && \\
-      echo "Comparing lein-pkg checksum ..." && \\
-      sha256sum lein-pkg && \\
-      echo "3601d55c4b5ac5c654e4ebd0d75abf7ad683f48cba8a7af1a8730b6590187b8a *lein-pkg" | sha256sum -c - && \\
-      mv lein-pkg $LEIN_INSTALL/lein && \\
-      chmod 0755 $LEIN_INSTALL/lein && \\
-      wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip && \\
-      wget -q https://github.com/technomancy/leiningen/releases/download/$LEIN_VERSION/leiningen-$LEIN_VERSION-standalone.zip.asc && \\
-      gpg --batch --keyserver keys.openpgp.org --recv-key 20242BACBBE95ADA22D0AFD7808A33D379C806C3 && \
-      echo "Verifying file PGP signature..." && \\
-      gpg --batch --verify leiningen-$LEIN_VERSION-standalone.zip.asc leiningen-$LEIN_VERSION-standalone.zip && \
-      rm leiningen-$LEIN_VERSION-standalone.zip.asc && \\
-      mkdir -p /usr/share/java && \\
-      mv leiningen-$LEIN_VERSION-standalone.zip /usr/share/java/leiningen-$LEIN_VERSION-standalone.jar && \
-      apt-get purge -y --auto-remove gnupg
-
+    
+    RUN mkdir -p LEIN_INSTALL && \
+      curl -sSL -o $LEIN_INSTALL/lein "https://raw.githubusercontent.com/technomancy/leiningen/${LEIN_VERSION}/bin/lein" && \
+      chmod +x $LEIN_INSTALL/lein
+   
     ENV PATH=$PATH:$LEIN_INSTALL
     ENV LEIN_ROOT 1
 
@@ -196,12 +181,10 @@ end
 
 def write_sbt(out, tag)
   sbt_tag = case tag.strip
-  when /^[8]/
-    "0.13.15"
-  when /^[9]/
-    "1.0.4"
-  when /^[11]/, /^[16]/, /^17/
-    "1.4.1"
+  when /^[8]/, /^[9]/, /^[11]/, /^[16]/, /^17/
+    "1.5.8"
+  when /^[20]/
+    "1.6.2"
   end
 
   exit_with("No compatible sbt version found for tag: '#{tag}'") unless sbt_tag
@@ -213,10 +196,10 @@ def write_sbt(out, tag)
 
     # Install sbt #{sbt_tag}
     ENV SBT_VERSION=#{sbt_tag}
-
+       
     RUN if grep -q Debian /etc/os-release; then \\
       curl --silent --show-error --location --fail --retry 3 --output \\
-        sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb \\
+        sbt-$SBT_VERSION.deb https://scala.jfrog.io/artifactory/debian/sbt-$SBT_VERSION.deb \\
         && dpkg -i sbt-$SBT_VERSION.deb \\
         && rm sbt-$SBT_VERSION.deb \\
         && apt-get update \\
@@ -228,29 +211,18 @@ def write_sbt(out, tag)
 end
 
 def write_maven(out, version_regex)
-  info = official_lts_reference("maven", version_regex)
-  return if info.nil?
-  return unless info.have_commit_directory?
+  out.puts <<~EOL
+    USER root
 
-  resp = Excon.get("https://raw.githubusercontent.com", path: info.dockerfile_url)
-  if resp.status >= 300
-    exit_excon("fetching Dockerfile at #{info.dockerfile_url} for maven", resp)
-  end
+    ENV MAVEN_VERSION=3.8.6 PATH=/opt/apache-maven/bin:$PATH
+    RUN dl_URL="https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \
+      curl -sSL --fail --retry 3 $dl_URL -o apache-maven.tar.gz && \
+      tar -xzf apache-maven.tar.gz -C /opt/ && \
+      rm apache-maven.tar.gz && \
+      ln -s /opt/apache-maven-* /opt/apache-maven && \
+      mvn --version
+  EOL
 
-  out.puts(%Q{USER root})
-  out.puts(%Q{ENV USER_HOME=/home/#{CI_USER}})
-  
-  resp.body.each_line do |line|
-    next if line =~ /^FROM/
-    next if line =~ /ARG USER_HOME_DIR/
-    next if line =~ /^COPY/
-    next if line =~ /^CMD/
-    next if line =~ /^ENTRYPOINT/
-
-    out.puts(line)
-  end
-
-  out.puts %Q{RUN echo maven --version}
   out.puts %Q{USER #{CI_USER}}
   out.puts
 end
@@ -384,10 +356,10 @@ end
 
 def docker_exec(command)
   puts("\t===> " + command)
-  ENV["CI"] && system(command)
+  ENV["CI"] && system(command, exception: true)
 end
 
-def find_tags_and_aliases(lang, allow_regex, include_regex)
+def find_tags_and_aliases(lang, reject_regex, include_regex)
   resp = Excon.get("https://raw.githubusercontent.com", path: [
                                                           "docker-library/official-images",
                                                           DOCKER_BRANCH,
@@ -400,14 +372,14 @@ def find_tags_and_aliases(lang, allow_regex, include_regex)
 
   result = []
   lookup = false
-  resp.body.each_line do |line|  
+  resp.body.each_line do |line|
     tags = []
     if matched = line.match(/^Tags: (.*)/)
-      tags = find_valid_tags(matched[1], allow_regex, include_regex)
+      tags = find_valid_tags(matched[1], reject_regex, include_regex)
       lookup = tags.size > 0
       result << tags if lookup
     elsif matched = line.match(/^SharedTags: (.*)/)
-      if lookup && shared_tags = find_valid_tags(matched[1], allow_regex, include_regex)
+      if lookup && shared_tags = find_valid_tags(matched[1], reject_regex, include_regex)
         item = result[-1]
         item |= shared_tags
         result[-1] = item
