@@ -1,0 +1,25 @@
+global:
+  variables:
+  - DOCKER_PUSH=true
+  - DIRECTORY=generated
+
+tasks:
+  languages:
+    steps:
+    - run: bundle install
+    - run: |
+        DAY_OF_MONTH=$(date +%d)
+        LANGUAGES=($(ls -d $DIRECTORY/*))
+        SIZE="${#LANGUAGES[@]}"
+        INDEX=$(($DAY_OF_MONTH % $SIZE))
+        LANG="$(basename ${LANGUAGES[INDEX]})"
+        test -n "$LANG"
+        echo "Building images for $LANG"
+
+        sh -c 'rake generate:build[$LANG]'
+
+trigger:
+  schedules:
+  - name: daily
+    cron: '15 10 * * *' ## daily at 10:15am
+    branch: master
