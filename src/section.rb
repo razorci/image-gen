@@ -17,7 +17,7 @@ def write_section(out, key, lang, tag)
                    && rm -rf /tmp/docker /tmp/docker.tgz \\
                    && which docker \\
                    && (docker version || true) \\
-                   && groupadd -g "$DOCKER_GID" -r docker
+                   && groupadd -g "$DOCKER_GID" -r docker -f
              EOL
   when "docker-compose", :"docker-compose", "compose", "docker_compose", :"docker_compose"
     out.puts <<~EOL

@@ -1,6 +1,8 @@
 
 base :golang
 
+tag_filter /buster/, /bullseye/
+
 layers(:docker, :docker_compose, :dockerize)
 
 layer "Instal gotestsum", <<~EOL

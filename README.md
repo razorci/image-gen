@@ -22,6 +22,14 @@ To generate dockerfiles for a language
 
 It would also generate a `manifest.json` while consists the docker image name, it's variants and tags.
 
+You can bump following tools before generating the dockerfiles -
+
+        GRADLE_VERSION
+        ANT_VERSION
+        lein_tag / LEIN_VERSION
+        SBT_VERSION
+        MAVEN_VERSION
+
 ### 3. Building container images
 
 Step2 will generate various manifest files along with dockerfiles for the latest versions/tags. To build the customized

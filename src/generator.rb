@@ -248,6 +248,7 @@ module BuildDocker
         docker_exec("docker push #{docker_image}") if do_push
 
         aliases.each do |t|
+          next if !!t
           target_image = "#{image}:#{t}"
           docker_exec("docker tag #{docker_image} #{target_image}")
           docker_exec("docker push #{target_image}") if do_push

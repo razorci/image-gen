@@ -2,120 +2,36 @@
   "base": "razorci/openjdk",
   "items": [
     {
-      "tag": "20-bullseye",
+      "tag": "22-bookworm",
       "aliases": [
-        "20-jdk-bullseye"
+
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "20-buster",
+      "tag": "22-bullseye",
       "aliases": [
-        "20-jdk-buster"
+
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "19-bullseye",
+      "tag": "21-bookworm",
       "aliases": [
-        "19-jdk-bullseye"
+
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "19-buster",
+      "tag": "21-bullseye",
       "aliases": [
-        "19-jdk-buster"
-      ],
-      "variants": [
 
-      ]
-    },
-    {
-      "tag": "18-bullseye",
-      "aliases": [
-        "18-jdk-bullseye",
-        "18.0-bullseye",
-        "18.0-jdk-bullseye",
-        "18.0.2-bullseye",
-        "18.0.2-jdk-bullseye",
-        "bullseye",
-        "jdk-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "18-buster",
-      "aliases": [
-        "18-jdk-buster",
-        "18.0-buster",
-        "18.0-jdk-buster",
-        "18.0.2-buster",
-        "18.0.2-jdk-buster",
-        "buster",
-        "jdk-buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "11",
-      "aliases": [
-        "11-bullseye",
-        "11-jdk",
-        "11-jdk-bullseye",
-        "11.0",
-        "11.0-bullseye",
-        "11.0-jdk",
-        "11.0-jdk-bullseye",
-        "11.0.16-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "11-buster",
-      "aliases": [
-        "11-jdk-buster",
-        "11.0-buster",
-        "11.0-jdk-buster",
-        "11.0.16-buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "8",
-      "aliases": [
-        "8-bullseye",
-        "8-jdk",
-        "8-jdk-bullseye",
-        "8u342",
-        "8u342-bullseye",
-        "8u342-jdk",
-        "8u342-jdk-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "8-buster",
-      "aliases": [
-        "8-jdk-buster",
-        "8u342-buster",
-        "8u342-jdk-buster"
       ],
       "variants": [
 

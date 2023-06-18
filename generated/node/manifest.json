@@ -2,14 +2,10 @@
   "base": "razorci/node",
   "items": [
     {
-      "tag": "18",
+      "tag": "20",
       "aliases": [
-        "18-bullseye",
-        "18.7",
-        "18.7-bullseye",
-        "18.7.0",
-        "18.7.0-bullseye",
-        "bullseye",
+        "20.3",
+        "20.3.0",
         "latest"
       ],
       "variants": [
@@ -17,23 +13,13 @@
       ]
     },
     {
-      "tag": "18-buster",
+      "tag": "18",
       "aliases": [
-        "18.7-buster",
-        "18.7.0-buster",
-        "buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "16-bullseye",
-      "aliases": [
-        "16.16-bullseye",
-        "16.16.0-bullseye",
-        "gallium-bullseye",
-        "lts-bullseye"
+        "18.16",
+        "18.16.0",
+        "hydrogen",
+        "lts",
+        "lts-hydrogen"
       ],
       "variants": [
 
@@ -42,42 +28,9 @@
     {
       "tag": "16",
       "aliases": [
-        "16-buster",
-        "16.16",
-        "16.16-buster",
-        "16.16.0",
-        "16.16.0-buster",
-        "gallium",
-        "gallium-buster",
-        "lts",
-        "lts-buster",
-        "lts-gallium"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "14-bullseye",
-      "aliases": [
-        "14.20-bullseye",
-        "14.20.0-bullseye",
-        "fermium-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "14",
-      "aliases": [
-        "14-buster",
-        "14.20",
-        "14.20-buster",
-        "14.20.0",
-        "14.20.0-buster",
-        "fermium",
-        "fermium-buster"
+        "16.20",
+        "16.20.0",
+        "gallium"
       ],
       "variants": [
 

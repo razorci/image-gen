@@ -4,17 +4,16 @@ base :openjdk
 layers(:docker, :docker_compose, :dockerize)
 user_layers(:maven, :gradle, :ant, :sbt, :lein)
 
-tag_filter /7/, /6/, /jre/, /oracle/, /ea/
-tag_include_filter /8-jdk$/, /^(11|12|13|14|15|16|17|18)$/, /(11|12|13|14|15|16|17|18)-(buster|bullseye)/
+tag_include_filter /^(21|22)-(bullseye|bookworm)/
 
 layer "Update PATH for Java tools", <<~EOL
     ENV PATH="#{SBT_HOME}/bin::#{ANT_HOME}/bin:#{GRADLE_HOME}/bin:$PATH"
     
     # smoke test with path
     RUN mvn -version \\
-        && ant -version \\
+        && ant -version \\ 
         && gradle -version \\
         && lein --version
 EOL
 
-write_readme("OpenJDK")
+# write_readme("OpenJDK")

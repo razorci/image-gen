@@ -4,20 +4,20 @@
     {
       "tag": "8",
       "aliases": [
-        "8-bullseye",
+        "8-bookworm",
         "8-cli",
-        "8-cli-bullseye",
-        "8.1",
-        "8.1-bullseye",
-        "8.1-cli",
-        "8.1-cli-bullseye",
-        "8.1.9",
-        "8.1.9-bullseye",
-        "8.1.9-cli",
-        "8.1.9-cli-bullseye",
-        "bullseye",
+        "8-cli-bookworm",
+        "8.2",
+        "8.2-bookworm",
+        "8.2-cli",
+        "8.2-cli-bookworm",
+        "8.2.7",
+        "8.2.7-bookworm",
+        "8.2.7-cli",
+        "8.2.7-cli-bookworm",
+        "bookworm",
         "cli",
-        "cli-bullseye",
+        "cli-bookworm",
         "latest"
       ],
       "variants": [
@@ -25,15 +25,41 @@
       ]
     },
     {
-      "tag": "8-buster",
+      "tag": "8-bullseye",
       "aliases": [
-        "8-cli-buster",
-        "8.1-buster",
-        "8.1-cli-buster",
-        "8.1.9-buster",
-        "8.1.9-cli-buster",
-        "buster",
-        "cli-buster"
+        "8-cli-bullseye",
+        "8.2-bullseye",
+        "8.2-cli-bullseye",
+        "8.2.7-bullseye",
+        "8.2.7-cli-bullseye",
+        "bullseye",
+        "cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.1",
+      "aliases": [
+        "8.1-bookworm",
+        "8.1-cli",
+        "8.1-cli-bookworm",
+        "8.1.20",
+        "8.1.20-bookworm",
+        "8.1.20-cli",
+        "8.1.20-cli-bookworm"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.1-bullseye",
+      "aliases": [
+        "8.1-cli-bullseye",
+        "8.1.20-bullseye",
+        "8.1.20-cli-bullseye"
       ],
       "variants": [
         "node"
@@ -45,10 +71,10 @@
         "8.0-bullseye",
         "8.0-cli",
         "8.0-cli-bullseye",
-        "8.0.22",
-        "8.0.22-bullseye",
-        "8.0.22-cli",
-        "8.0.22-cli-bullseye"
+        "8.0.29",
+        "8.0.29-bullseye",
+        "8.0.29-cli",
+        "8.0.29-cli-bullseye"
       ],
       "variants": [
         "node"
@@ -58,40 +84,8 @@
       "tag": "8.0-buster",
       "aliases": [
         "8.0-cli-buster",
-        "8.0.22-buster",
-        "8.0.22-cli-buster"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7",
-      "aliases": [
-        "7-bullseye",
-        "7-cli",
-        "7-cli-bullseye",
-        "7.4",
-        "7.4-bullseye",
-        "7.4-cli",
-        "7.4-cli-bullseye",
-        "7.4.30",
-        "7.4.30-bullseye",
-        "7.4.30-cli",
-        "7.4.30-cli-bullseye"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "7-buster",
-      "aliases": [
-        "7-cli-buster",
-        "7.4-buster",
-        "7.4-cli-buster",
-        "7.4.30-buster",
-        "7.4.30-cli-buster"
+        "8.0.29-buster",
+        "8.0.29-cli-buster"
       ],
       "variants": [
         "node"

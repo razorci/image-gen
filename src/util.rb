@@ -41,8 +41,9 @@ end
 def write_install_standard(out)
   out.puts <<~EOL
              # Make APT non-interactive
-             RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci
-             RUN echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
+             RUN mkdir -p /etc/apt/apt.conf.d && \
+                echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci && \
+                echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
              ENV DEBIAN_FRONTEND=noninteractive
 
              # Install Packages
@@ -67,7 +68,7 @@ def write_install_standard(out)
                  gzip \\
                  parallel \\
                  net-tools \\
-                 netcat \\
+                 netcat-traditional \\
                  unzip \\
                  zip \\
                  bzip2 \\
@@ -214,7 +215,7 @@ def write_maven(out, version_regex)
   out.puts <<~EOL
     USER root
 
-    ENV MAVEN_VERSION=3.8.6 PATH=/opt/apache-maven/bin:$PATH
+    ENV MAVEN_VERSION=3.8.8 PATH=/opt/apache-maven/bin:$PATH
     RUN dl_URL="https://www.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" && \
       curl -sSL --fail --retry 3 $dl_URL -o apache-maven.tar.gz && \
       tar -xzf apache-maven.tar.gz -C /opt/ && \

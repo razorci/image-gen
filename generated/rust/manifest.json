@@ -4,8 +4,8 @@
     {
       "tag": "1-buster",
       "aliases": [
-        "1.63-buster",
-        "1.63.0-buster",
+        "1.70-buster",
+        "1.70.0-buster",
         "buster"
       ],
       "variants": [
@@ -16,12 +16,23 @@
       "tag": "1",
       "aliases": [
         "1-bullseye",
-        "1.63",
-        "1.63-bullseye",
-        "1.63.0",
-        "1.63.0-bullseye",
+        "1.70",
+        "1.70-bullseye",
+        "1.70.0",
+        "1.70.0-bullseye",
         "bullseye",
         "latest"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "1-bookworm",
+      "aliases": [
+        "1.70-bookworm",
+        "1.70.0-bookworm",
+        "bookworm"
       ],
       "variants": [
 
