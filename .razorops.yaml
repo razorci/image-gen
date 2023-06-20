@@ -6,6 +6,7 @@ global:
 tasks:
   languages:
     steps:
+    - checkout
     - run: bundle install
     - run: |
         DAY_OF_MONTH=$(date +%d)
@@ -21,5 +22,5 @@ tasks:
 trigger:
   schedules:
   - name: daily
-    cron: '15 10 * * *' ## daily at 10:15am
+    cron: '30 10 * * *' ## daily at 10:30am
     branch: master
