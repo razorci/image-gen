@@ -22,5 +22,5 @@ tasks:
 trigger:
   schedules:
   - name: daily
-    cron: '30 10 * * *' ## daily at 10:30am
+    cron: '30 11 * * *' ## daily at 11:30am
     branch: master
