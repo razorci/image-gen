@@ -4,7 +4,7 @@ variants :node
 
 layers :docker, :docker_compose, :dockerize
 
-tag_filter /rc/, /beta/ , /apache/, /zts/, /fpm/
+tag_filter /RC/, /rc/, /beta/ , /apache/, /zts/, /fpm/
 
 write_readme("PHP")
 

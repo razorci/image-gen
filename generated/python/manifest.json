@@ -2,24 +2,6 @@
   "base": "razorci/python",
   "items": [
     {
-      "tag": "3.12.0b2",
-      "aliases": [
-        "3.12.0b2-bookworm"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.12.0b2-bullseye",
-      "aliases": [
-
-      ],
-      "variants": [
-
-      ]
-    },
-    {
       "tag": "3",
       "aliases": [
         "3-bookworm",

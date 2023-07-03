@@ -4,7 +4,7 @@ IMAGE_NAME ?= razorci/img
 DOCKER_PUSH=false
 LATEST_TAG=22.04
 
-build: $(patsubst %/Dockerfile,build-%,$(wildcard */Dockerfile))
+build := $(patsubst %/Dockerfile,build-%, $(wildcard */Dockerfile))
 	
 build-%: %/Dockerfile
 	docker build -f $*/Dockerfile -t ${IMAGE_NAME}:$* .

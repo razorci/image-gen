@@ -4,8 +4,7 @@
 FROM node:20
 
 # Make APT non-interactive
-RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci
-RUN echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
+RUN mkdir -p /etc/apt/apt.conf.d &&    echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci &&    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Packages

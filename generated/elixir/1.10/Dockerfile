@@ -4,8 +4,7 @@
 FROM elixir:1.10
 
 # Make APT non-interactive
-RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci
-RUN echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
+RUN mkdir -p /etc/apt/apt.conf.d &&    echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/99razorci &&    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/99razorci
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Packages
@@ -30,7 +29,7 @@ RUN apt-get install -y -m \
     gzip \
     parallel \
     net-tools \
-    netcat \
+    netcat-traditional \
     unzip \
     zip \
     bzip2 \
@@ -58,7 +57,7 @@ RUN set -ex \
     && rm -rf /tmp/docker /tmp/docker.tgz \
     && which docker \
     && (docker version || true) \
-    && groupadd -g "$DOCKER_GID" -r docker
+    && groupadd -g "$DOCKER_GID" -r docker -f
 
 # Install Compose
 ENV DOCKER_COMPOSE=1.29.2
