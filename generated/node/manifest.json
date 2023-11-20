@@ -2,11 +2,24 @@
   "base": "razorci/node",
   "items": [
     {
+      "tag": "21",
+      "aliases": [
+        "21.2",
+        "21.2.0",
+        "latest"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
       "tag": "20",
       "aliases": [
-        "20.3",
-        "20.3.1",
-        "latest"
+        "20.9",
+        "20.9.0",
+        "iron",
+        "lts",
+        "lts-iron"
       ],
       "variants": [
 
@@ -15,22 +28,9 @@
     {
       "tag": "18",
       "aliases": [
-        "18.16",
-        "18.16.1",
-        "hydrogen",
-        "lts",
-        "lts-hydrogen"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "16",
-      "aliases": [
-        "16.20",
-        "16.20.1",
-        "gallium"
+        "18.18",
+        "18.18.2",
+        "hydrogen"
       ],
       "variants": [
 

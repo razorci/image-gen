@@ -2,13 +2,31 @@
   "base": "razorci/python",
   "items": [
     {
+      "tag": "3.13.0a1",
+      "aliases": [
+        "3.13.0a1-bookworm"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.13.0a1-bullseye",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
       "tag": "3",
       "aliases": [
         "3-bookworm",
-        "3.11",
-        "3.11-bookworm",
-        "3.11.4",
-        "3.11.4-bookworm",
+        "3.12",
+        "3.12-bookworm",
+        "3.12.0",
+        "3.12.0-bookworm",
         "bookworm",
         "latest"
       ],
@@ -19,9 +37,29 @@
     {
       "tag": "3-bullseye",
       "aliases": [
-        "3.11-bullseye",
-        "3.11.4-bullseye",
+        "3.12-bullseye",
+        "3.12.0-bullseye",
         "bullseye"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.11",
+      "aliases": [
+        "3.11-bookworm",
+        "3.11.6",
+        "3.11.6-bookworm"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.11-bullseye",
+      "aliases": [
+        "3.11.6-bullseye"
       ],
       "variants": [
 
@@ -31,8 +69,8 @@
       "tag": "3.10",
       "aliases": [
         "3.10-bookworm",
-        "3.10.12",
-        "3.10.12-bookworm"
+        "3.10.13",
+        "3.10.13-bookworm"
       ],
       "variants": [
 
@@ -41,7 +79,7 @@
     {
       "tag": "3.10-bullseye",
       "aliases": [
-        "3.10.12-bullseye"
+        "3.10.13-bullseye"
       ],
       "variants": [
 
@@ -51,8 +89,8 @@
       "tag": "3.9",
       "aliases": [
         "3.9-bookworm",
-        "3.9.17",
-        "3.9.17-bookworm"
+        "3.9.18",
+        "3.9.18-bookworm"
       ],
       "variants": [
 
@@ -61,7 +99,7 @@
     {
       "tag": "3.9-bullseye",
       "aliases": [
-        "3.9.17-bullseye"
+        "3.9.18-bullseye"
       ],
       "variants": [
 
@@ -71,8 +109,8 @@
       "tag": "3.8",
       "aliases": [
         "3.8-bookworm",
-        "3.8.17",
-        "3.8.17-bookworm"
+        "3.8.18",
+        "3.8.18-bookworm"
       ],
       "variants": [
 
@@ -81,27 +119,7 @@
     {
       "tag": "3.8-bullseye",
       "aliases": [
-        "3.8.17-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.7",
-      "aliases": [
-        "3.7-bookworm",
-        "3.7.17",
-        "3.7.17-bookworm"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.7-bullseye",
-      "aliases": [
-        "3.7.17-bullseye"
+        "3.8.18-bullseye"
       ],
       "variants": [
 

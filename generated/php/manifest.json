@@ -11,10 +11,10 @@
         "8.2-bookworm",
         "8.2-cli",
         "8.2-cli-bookworm",
-        "8.2.7",
-        "8.2.7-bookworm",
-        "8.2.7-cli",
-        "8.2.7-cli-bookworm",
+        "8.2.12",
+        "8.2.12-bookworm",
+        "8.2.12-cli",
+        "8.2.12-cli-bookworm",
         "bookworm",
         "cli",
         "cli-bookworm",
@@ -30,8 +30,8 @@
         "8-cli-bullseye",
         "8.2-bullseye",
         "8.2-cli-bullseye",
-        "8.2.7-bullseye",
-        "8.2.7-cli-bullseye",
+        "8.2.12-bullseye",
+        "8.2.12-cli-bullseye",
         "bullseye",
         "cli-bullseye"
       ],
@@ -45,10 +45,10 @@
         "8.1-bookworm",
         "8.1-cli",
         "8.1-cli-bookworm",
-        "8.1.20",
-        "8.1.20-bookworm",
-        "8.1.20-cli",
-        "8.1.20-cli-bookworm"
+        "8.1.25",
+        "8.1.25-bookworm",
+        "8.1.25-cli",
+        "8.1.25-cli-bookworm"
       ],
       "variants": [
         "node"
@@ -58,8 +58,8 @@
       "tag": "8.1-bullseye",
       "aliases": [
         "8.1-cli-bullseye",
-        "8.1.20-bullseye",
-        "8.1.20-cli-bullseye"
+        "8.1.25-bullseye",
+        "8.1.25-cli-bullseye"
       ],
       "variants": [
         "node"
@@ -71,10 +71,10 @@
         "8.0-bullseye",
         "8.0-cli",
         "8.0-cli-bullseye",
-        "8.0.29",
-        "8.0.29-bullseye",
-        "8.0.29-cli",
-        "8.0.29-cli-bullseye"
+        "8.0.30",
+        "8.0.30-bullseye",
+        "8.0.30-cli",
+        "8.0.30-cli-bullseye"
       ],
       "variants": [
         "node"
@@ -84,8 +84,8 @@
       "tag": "8.0-buster",
       "aliases": [
         "8.0-cli-buster",
-        "8.0.29-buster",
-        "8.0.29-cli-buster"
+        "8.0.30-buster",
+        "8.0.30-cli-buster"
       ],
       "variants": [
         "node"

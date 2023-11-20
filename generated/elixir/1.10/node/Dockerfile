@@ -8,7 +8,7 @@ USER root
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-ENV NODE_VERSION 18.16.1
+ENV NODE_VERSION 20.9.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -20,6 +20,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     i386) ARCH='x86';; \
     *) echo "unsupported architecture"; exit 1 ;; \
   esac \
+  # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+  && export GNUPGHOME="$(mktemp -d)" \
   # gpg keys listed at https://github.com/nodejs/node#release-keys
   && set -ex \
   && for key in \
@@ -33,6 +35,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4 \
     C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
     108F52B48DB57BB0CC439B2997B01419BD92F80A \
+    A363A499291CBBC940DD62E41F10027AF002F8B0 \
   ; do \
       gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys "$key" || \
       gpg --batch --keyserver keyserver.ubuntu.com --recv-keys "$key" ; \
@@ -40,6 +43,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
   && curl -fsSLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
   && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
+  && gpgconf --kill all \
+  && rm -rf "$GNUPGHOME" \
   && grep " node-v$NODE_VERSION-linux-$ARCH.tar.xz\$" SHASUMS256.txt | sha256sum -c - \
   && tar -xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
   && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
@@ -51,6 +56,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
 ENV YARN_VERSION 1.22.19
 
 RUN set -ex \
+  # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
+  && export GNUPGHOME="$(mktemp -d)" \
   && for key in \
     6A010C5166006599AA17F08146C2130DFD2497F5 \
   ; do \
@@ -60,6 +67,8 @@ RUN set -ex \
   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc" \
   && gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
+  && gpgconf --kill all \
+  && rm -rf "$GNUPGHOME" \
   && mkdir -p /opt \
   && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
