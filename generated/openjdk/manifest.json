@@ -4,7 +4,7 @@
     {
       "tag": "22-bookworm",
       "aliases": [
-
+        "22-jdk-bookworm"
       ],
       "variants": [
 
@@ -13,25 +13,7 @@
     {
       "tag": "22-bullseye",
       "aliases": [
-
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "21-bookworm",
-      "aliases": [
-
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "21-bullseye",
-      "aliases": [
-
+        "22-jdk-bullseye"
       ],
       "variants": [
 

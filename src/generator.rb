@@ -46,15 +46,8 @@ class Generator
     find_tags_and_aliases(@base, @tag_filter, @tag_include_filter).each do |aliases|
       out, tag = StringIO.new, aliases.shift
 
-      puts "Found tags: #{tag} #{aliases}"
-
+      puts "Found tags: #{tag} with aliases: #{aliases}"
       section_tag = tag
-      if language == "openjdk"
-        matches = tag.match(/^(\d+)-/)
-        if matches
-          section_tag = matches[1]
-        end
-      end
 
       manifest_item, variant_mf = {
         tag: tag,
