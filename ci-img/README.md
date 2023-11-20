@@ -10,7 +10,9 @@ To know more about "[Custom build environment][1]", please follow to the link.
 
 * Build and push the container image
 
-        make <IMAGE_TAG> DOCKER_PUSH=true 
+        make build-<IMAGE_TAG> DOCKER_PUSH=true
+
+For example `make build-22.04` and `make build-20.04`
 
 ### How to use in Razorops
 

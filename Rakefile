@@ -10,7 +10,7 @@ def require_lang!(args)
 end
 
 def outdir
-  ENV.fetch("DIRECTORY") { File.join(File.dirname(__FILE__), "dockerfiles") }
+  ENV.fetch("DIRECTORY") { File.join(File.dirname(__FILE__), "generated") }
 end
 
 namespace :generate do

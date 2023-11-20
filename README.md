@@ -18,7 +18,7 @@ and common system libraries needed in a CI environment.
 
 To generate dockerfiles for a language
 
-        rake generate:dockerfile[<lang>] DIRECTORY=generated
+        rake generate:dockerfile[<lang>] [DIRECTORY=generated]
 
 It would also generate a `manifest.json` while consists the docker image name, it's variants and tags.
 
