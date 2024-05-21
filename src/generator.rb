@@ -232,7 +232,7 @@ module BuildDocker
       next unless File.directory?(path)
 
       Dir.chdir(path) do
-        aliases = File.read("ALIASES").split(",").map(&:strip) rescue []
+        aliases = File.read("ALIASES").split(",").map(&:strip) || []
         image = File.read("IMAGE").strip
         docker_image = "#{image}:#{tag}"
         puts "Building #{docker_image}"
@@ -241,7 +241,7 @@ module BuildDocker
         docker_exec("docker push #{docker_image}") if do_push
 
         aliases.each do |t|
-          next if !!t
+          next if t.nil? || t == ""
           target_image = "#{image}:#{t}"
           docker_exec("docker tag #{docker_image} #{target_image}")
           docker_exec("docker push #{target_image}") if do_push
