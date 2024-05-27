@@ -2,26 +2,23 @@
   "base": "razorci/golang",
   "items": [
     {
-      "tag": "1",
+      "tag": "1-bookworm",
       "aliases": [
-        "1-bookworm",
-        "1.22",
         "1.22-bookworm",
-        "1.22.3",
         "1.22.3-bookworm",
-        "bookworm",
-        "latest"
+        "1.22",
+        "1.22.3"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "1.21",
+      "tag": "1.21-bookworm",
       "aliases": [
-        "1.21-bookworm",
-        "1.21.10",
-        "1.21.10-bookworm"
+        "1.21.10-bookworm",
+        "1.21",
+        "1.21.10"
       ],
       "variants": [
 

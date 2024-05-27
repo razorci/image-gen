@@ -1,7 +1,7 @@
 
 base :golang
 
-tag_filter /buster/, /bullseye/
+tag_filter /bullseye/, /buster/
 
 layers(:docker, :docker_compose, :dockerize)
 

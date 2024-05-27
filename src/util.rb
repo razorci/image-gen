@@ -378,26 +378,32 @@ def find_tags_and_aliases(lang, reject_regex, include_regex)
     if matched = line.match(/^Tags: (.*)/)
       tags = find_valid_tags(matched[1], reject_regex, include_regex)
       lookup = tags.size > 0
-      result << tags if lookup
+      result << semvar_sort(tags) if lookup
     elsif matched = line.match(/^SharedTags: (.*)/)
       if lookup && shared_tags = find_valid_tags(matched[1], reject_regex, include_regex)
         item = result[-1]
-        item |= shared_tags
+        item |= semvar_sort(shared_tags)
         result[-1] = item
       end
 
       lookup = false
     end
-
   end
 
-  result.map{|t| t.sort }
+  result
+end
+
+def semvar_sort(tags)
+  puts "sorting #{tags}"
+  tags.select{|t| t =~ /\d+/ }.sort_by do |t|
+    Gem::Version.new(t)
+  end
 end
 
 def find_valid_tags(line, reject_regex, include_regex)
   tags = line.split(",").map { |t| t.strip }.compact
   tags = tags.reject do |tag|
-    REJECT_TAGS.any? { |re| tag =~ re }
+    REJECT_TAGS.any? { |re| tag =~ re } || tag.size < 2
   end
 
   selected = included = []
