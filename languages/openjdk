@@ -4,7 +4,7 @@ base :openjdk
 layers(:docker, :docker_compose, :dockerize)
 user_layers(:maven, :gradle, :ant, :sbt, :lein)
 
-tag_include_filter /^(21|22)-(jdk-)?(bullseye|bookworm)$/
+tag_include_filter /^(21|22|23)-(jdk-)?(bullseye|bookworm)$/
 
 layer "Update PATH for Java tools", <<~EOL
     ENV PATH="#{SBT_HOME}/bin::#{ANT_HOME}/bin:#{GRADLE_HOME}/bin:$PATH"

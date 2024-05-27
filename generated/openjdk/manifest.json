@@ -2,18 +2,18 @@
   "base": "razorci/openjdk",
   "items": [
     {
-      "tag": "22-bookworm",
+      "tag": "23-bookworm",
       "aliases": [
-        "22-jdk-bookworm"
+        "23-jdk-bookworm"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "22-bullseye",
+      "tag": "23-bullseye",
       "aliases": [
-        "22-jdk-bullseye"
+        "23-jdk-bullseye"
       ],
       "variants": [
 

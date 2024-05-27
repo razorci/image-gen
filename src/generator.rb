@@ -43,7 +43,8 @@ class Generator
     image_base = "#{DOCKER_REPO}/#{self.language}"
     manifest = { base: image_base, items: [] }
 
-    find_tags_and_aliases(@base, @tag_filter, @tag_include_filter).each do |aliases|
+    tags_and_aliases = find_tags_and_aliases(@base, @tag_filter, @tag_include_filter)
+    tags_and_aliases.each do |aliases|
       out, tag = StringIO.new, aliases.shift
 
       puts "Found tags: #{tag} with aliases: #{aliases}"
@@ -106,6 +107,10 @@ class Generator
 
       manifest_item[:variants] = variant_mf
       manifest[:items] << manifest_item
+    end
+
+    if tags_and_aliases.nil? || tags_and_aliases.size == 0
+      fail "Not able to find any tags for language {#{self.language}}"
     end
 
     manifest_path = File.join(self.output_dir, self.language, "manifest.json")

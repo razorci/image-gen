@@ -2,10 +2,18 @@
   "base": "razorci/elixir",
   "items": [
     {
+      "tag": "1.16",
+      "aliases": [
+        "1.16.2"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
       "tag": "1.15",
       "aliases": [
-        "1.15.7",
-        "latest"
+        "1.15.7"
       ],
       "variants": [
         "node"
@@ -33,51 +41,6 @@
       "tag": "1.12",
       "aliases": [
         "1.12.3"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.11",
-      "aliases": [
-        "1.11.4"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.10",
-      "aliases": [
-        "1.10.4"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.9",
-      "aliases": [
-        "1.9.4"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.8",
-      "aliases": [
-        "1.8.2"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "1.7",
-      "aliases": [
-        "1.7.4"
       ],
       "variants": [
         "node"

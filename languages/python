@@ -4,7 +4,7 @@ base :python
 layers(:docker, :docker_compose, :dockerize)
 #variants(:node)
 
-tag_filter /0b3/
+tag_filter /0b1/, /0b3/
 
 layer "Install pipenv and poetry", <<~EOL
     RUN sudo pip install --no-cache pipenv poetry

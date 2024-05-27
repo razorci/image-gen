@@ -9,11 +9,9 @@ tasks:
     - checkout
     - run: bundle install
     - run: |
-        DAY_OF_MONTH=$(date +%d)
         LANGUAGES=($(ls -d $DIRECTORY/*))
-        SIZE="${#LANGUAGES[@]}"
-        INDEX=$(($DAY_OF_MONTH % $SIZE))
-        LANG="$(basename ${LANGUAGES[INDEX]})"
+        LANGPATH=${LANGUAGES[ $RANDOM % ${#LANGUAGES[@]} ]}
+        LANG="$(basename ${LANGPATH})"
         test -n "$LANG"
         echo "Building images for $LANG"
 

@@ -2,23 +2,18 @@
   "base": "razorci/php",
   "items": [
     {
-      "tag": "8",
+      "tag": "8-bookworm",
       "aliases": [
-        "8-bookworm",
-        "8-cli",
         "8-cli-bookworm",
-        "8.2",
-        "8.2-bookworm",
-        "8.2-cli",
-        "8.2-cli-bookworm",
-        "8.2.12",
-        "8.2.12-bookworm",
-        "8.2.12-cli",
-        "8.2.12-cli-bookworm",
-        "bookworm",
-        "cli",
-        "cli-bookworm",
-        "latest"
+        "8-cli",
+        "8.3-bookworm",
+        "8.3-cli-bookworm",
+        "8.3-cli",
+        "8.3",
+        "8.3.7-bookworm",
+        "8.3.7-cli-bookworm",
+        "8.3.7-cli",
+        "8.3.7"
       ],
       "variants": [
         "node"
@@ -28,27 +23,51 @@
       "tag": "8-bullseye",
       "aliases": [
         "8-cli-bullseye",
-        "8.2-bullseye",
-        "8.2-cli-bullseye",
-        "8.2.12-bullseye",
-        "8.2.12-cli-bullseye",
-        "bullseye",
-        "cli-bullseye"
+        "8.3-bullseye",
+        "8.3-cli-bullseye",
+        "8.3.7-bullseye",
+        "8.3.7-cli-bullseye"
       ],
       "variants": [
         "node"
       ]
     },
     {
-      "tag": "8.1",
+      "tag": "8.2-bookworm",
       "aliases": [
-        "8.1-bookworm",
-        "8.1-cli",
+        "8.2-cli-bookworm",
+        "8.2-cli",
+        "8.2",
+        "8.2.19-bookworm",
+        "8.2.19-cli-bookworm",
+        "8.2.19-cli",
+        "8.2.19"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.2-bullseye",
+      "aliases": [
+        "8.2-cli-bullseye",
+        "8.2.19-bullseye",
+        "8.2.19-cli-bullseye"
+      ],
+      "variants": [
+        "node"
+      ]
+    },
+    {
+      "tag": "8.1-bookworm",
+      "aliases": [
         "8.1-cli-bookworm",
-        "8.1.25",
-        "8.1.25-bookworm",
-        "8.1.25-cli",
-        "8.1.25-cli-bookworm"
+        "8.1-cli",
+        "8.1",
+        "8.1.28-bookworm",
+        "8.1.28-cli-bookworm",
+        "8.1.28-cli",
+        "8.1.28"
       ],
       "variants": [
         "node"
@@ -58,34 +77,8 @@
       "tag": "8.1-bullseye",
       "aliases": [
         "8.1-cli-bullseye",
-        "8.1.25-bullseye",
-        "8.1.25-cli-bullseye"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "8.0",
-      "aliases": [
-        "8.0-bullseye",
-        "8.0-cli",
-        "8.0-cli-bullseye",
-        "8.0.30",
-        "8.0.30-bullseye",
-        "8.0.30-cli",
-        "8.0.30-cli-bullseye"
-      ],
-      "variants": [
-        "node"
-      ]
-    },
-    {
-      "tag": "8.0-buster",
-      "aliases": [
-        "8.0-cli-buster",
-        "8.0.30-buster",
-        "8.0.30-cli-buster"
+        "8.1.28-bullseye",
+        "8.1.28-cli-bullseye"
       ],
       "variants": [
         "node"
