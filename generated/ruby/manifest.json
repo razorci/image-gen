@@ -6,8 +6,8 @@
       "aliases": [
         "3.3-bookworm",
         "3.3",
-        "3.3.1-bookworm",
-        "3.3.1"
+        "3.3.5-bookworm",
+        "3.3.5"
       ],
       "variants": [
         "node"
@@ -17,7 +17,7 @@
       "tag": "3-bullseye",
       "aliases": [
         "3.3-bullseye",
-        "3.3.1-bullseye"
+        "3.3.5-bullseye"
       ],
       "variants": [
         "node"
@@ -27,8 +27,8 @@
       "tag": "3.2-bookworm",
       "aliases": [
         "3.2",
-        "3.2.4-bookworm",
-        "3.2.4"
+        "3.2.5-bookworm",
+        "3.2.5"
       ],
       "variants": [
         "node"
@@ -37,7 +37,7 @@
     {
       "tag": "3.2-bullseye",
       "aliases": [
-        "3.2.4-bullseye"
+        "3.2.5-bullseye"
       ],
       "variants": [
         "node"
@@ -47,8 +47,8 @@
       "tag": "3.1-bookworm",
       "aliases": [
         "3.1",
-        "3.1.5-bookworm",
-        "3.1.5"
+        "3.1.6-bookworm",
+        "3.1.6"
       ],
       "variants": [
         "node"
@@ -57,7 +57,7 @@
     {
       "tag": "3.1-bullseye",
       "aliases": [
-        "3.1.5-bullseye"
+        "3.1.6-bullseye"
       ],
       "variants": [
         "node"
