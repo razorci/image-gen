@@ -5,9 +5,9 @@
       "tag": "3-bookworm",
       "aliases": [
         "3.12-bookworm",
-        "3.12.3-bookworm",
+        "3.12.6-bookworm",
         "3.12",
-        "3.12.3"
+        "3.12.6"
       ],
       "variants": [
 
@@ -17,7 +17,7 @@
       "tag": "3-bullseye",
       "aliases": [
         "3.12-bullseye",
-        "3.12.3-bullseye"
+        "3.12.6-bullseye"
       ],
       "variants": [
 
@@ -26,9 +26,9 @@
     {
       "tag": "3.11-bookworm",
       "aliases": [
-        "3.11.9-bookworm",
+        "3.11.10-bookworm",
         "3.11",
-        "3.11.9"
+        "3.11.10"
       ],
       "variants": [
 
@@ -37,7 +37,7 @@
     {
       "tag": "3.11-bullseye",
       "aliases": [
-        "3.11.9-bullseye"
+        "3.11.10-bullseye"
       ],
       "variants": [
 
@@ -46,9 +46,9 @@
     {
       "tag": "3.10-bookworm",
       "aliases": [
-        "3.10.14-bookworm",
+        "3.10.15-bookworm",
         "3.10",
-        "3.10.14"
+        "3.10.15"
       ],
       "variants": [
 
@@ -57,7 +57,7 @@
     {
       "tag": "3.10-bullseye",
       "aliases": [
-        "3.10.14-bullseye"
+        "3.10.15-bullseye"
       ],
       "variants": [
 
@@ -66,9 +66,9 @@
     {
       "tag": "3.9-bookworm",
       "aliases": [
-        "3.9.19-bookworm",
+        "3.9.20-bookworm",
         "3.9",
-        "3.9.19"
+        "3.9.20"
       ],
       "variants": [
 
@@ -77,7 +77,7 @@
     {
       "tag": "3.9-bullseye",
       "aliases": [
-        "3.9.19-bullseye"
+        "3.9.20-bullseye"
       ],
       "variants": [
 
@@ -86,9 +86,9 @@
     {
       "tag": "3.8-bookworm",
       "aliases": [
-        "3.8.19-bookworm",
+        "3.8.20-bookworm",
         "3.8",
-        "3.8.19"
+        "3.8.20"
       ],
       "variants": [
 
@@ -97,7 +97,7 @@
     {
       "tag": "3.8-bullseye",
       "aliases": [
-        "3.8.19-bullseye"
+        "3.8.20-bullseye"
       ],
       "variants": [
 
