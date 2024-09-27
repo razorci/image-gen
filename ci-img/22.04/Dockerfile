@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 ## Install Docker
-ENV DOCKER_VERSION=24.0.2
+ENV DOCKER_VERSION=27.2.0
 ARG DOCKER_GID=999
 RUN DIR=$(mktemp -d) \
 	&& DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" \
@@ -48,14 +48,21 @@ RUN DIR=$(mktemp -d) \
 	&& (docker version || true)
 
 # Install Docker Compose - see prerequisite above
-# Install Compose
-ENV DOCKER_COMPOSE=1.29.2
-RUN wget -q \
-	https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \
-	&& chmod +x /usr/local/bin/docker-compose \
-	&& docker-compose --version
-	
-# Install Dockerize v0.6.1
+ENV COMPOSE_VER 2.29.2
+ENV COMPOSE_SWITCH_VERSION 1.0.5
+RUN dockerPluginDir=/usr/local/lib/docker/cli-plugins && \
+	mkdir -p $dockerPluginDir && \
+	curl -sSL "https://github.com/docker/compose/releases/download/v${COMPOSE_VER}/docker-compose-linux-$(uname -m)" -o $dockerPluginDir/docker-compose && \
+	chmod +x $dockerPluginDir/docker-compose && \
+	curl -fL "https://github.com/docker/compose-switch/releases/download/v${COMPOSE_SWITCH_VERSION}/docker-compose-linux-$(dpkg --print-architecture)" -o /usr/local/bin/compose-switch && \
+	# Quick test of the Docker Compose install
+	docker compose version && \
+	chmod +x /usr/local/bin/compose-switch && \
+	update-alternatives --install /usr/local/bin/docker-compose docker-compose /usr/local/bin/compose-switch 99 && \
+	# Tests if docker-compose for v1 is transposed to v2
+	docker-compose version
+
+# Install Dockerize v0.8.0
 # Source repo: https://github.com/jwilder/dockerize
 RUN curl -sSL --fail --retry 3 --output /tmp/dockerize-linux-amd64.tar.gz "https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/dockerize-latest.tar.gz" && \
 	tar -C /usr/local/bin -xzvf /tmp/dockerize-linux-amd64.tar.gz && \
