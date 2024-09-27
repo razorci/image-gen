@@ -2,20 +2,10 @@
   "base": "razorci/rust",
   "items": [
     {
-      "tag": "1-buster",
-      "aliases": [
-        "1.78-buster",
-        "1.78.0-buster"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
       "tag": "1-bullseye",
       "aliases": [
-        "1.78-bullseye",
-        "1.78.0-bullseye"
+        "1.81-bullseye",
+        "1.81.0-bullseye"
       ],
       "variants": [
 
@@ -24,10 +14,10 @@
     {
       "tag": "1-bookworm",
       "aliases": [
-        "1.78-bookworm",
-        "1.78.0-bookworm",
-        "1.78",
-        "1.78.0"
+        "1.81-bookworm",
+        "1.81.0-bookworm",
+        "1.81",
+        "1.81.0"
       ],
       "variants": [
 
