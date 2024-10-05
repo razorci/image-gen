@@ -1,11 +1,11 @@
 ## This is deprecated, need to migrate something else
 ## https://github.com/docker-library/openjdk
-base :openjdk
+base :"eclipse-temurin"
 
 layers(:docker, :docker_compose, :dockerize)
 user_layers(:maven, :gradle, :ant, :sbt, :lein)
 
-tag_include_filter /^(24)-(jdk-)?(bullseye|bookworm)$/
+tag_include_filter /^(11|17|21|23)-(jre-|jdk-)?(jammy|noble)$/
 
 layer "Update PATH for Java tools", <<~EOL
     ENV PATH="#{SBT_HOME}/bin::#{ANT_HOME}/bin:#{GRADLE_HOME}/bin:$PATH"
