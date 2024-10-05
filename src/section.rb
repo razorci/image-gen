@@ -21,16 +21,23 @@ def write_section(out, key, lang, tag)
              EOL
   when "docker-compose", :"docker-compose", "compose", "docker_compose", :"docker_compose"
     out.puts <<~EOL
-               # Install Compose
-               ENV DOCKER_COMPOSE=1.29.2
-               RUN wget -q \\
-                   https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \\
-                   && chmod +x /usr/local/bin/docker-compose \\
-                   && docker-compose --version
+              # Install Compose
+              ENV DOCKER_COMPOSE=1.29.2
+              RUN wget -q \\
+                  https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose \\
+                  && chmod +x /usr/local/bin/docker-compose \\
+                  && docker-compose --version
+              
+              ENV DOCKER_COMPOSE_PLUGIN=2.29.7
+              RUN dockerPluginDir=/usr/local/lib/docker/cli-plugins && \
+                mkdir -p $dockerPluginDir && \
+                curl -sSL "https://github.com/docker/compose/releases/download/v$DOCKER_COMPOSE_PLUGIN/docker-compose-linux-$(uname -m)" -o $dockerPluginDir/docker-compose && \
+                chmod +x $dockerPluginDir/docker-compose && \
+                docker compose version
              EOL
   when "dockerize", :dockerize
     out.puts <<~EOG
-               ENV DOCKERIZE_VERSION v0.6.1
+               ENV DOCKERIZE_VERSION v0.8.0
                RUN if grep -q Debian /etc/os-release; then \
                     wget -q https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\
                     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \\

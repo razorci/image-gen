@@ -5,9 +5,9 @@
       "tag": "3-bookworm",
       "aliases": [
         "3.12-bookworm",
-        "3.12.6-bookworm",
+        "3.12.7-bookworm",
         "3.12",
-        "3.12.6"
+        "3.12.7"
       ],
       "variants": [
 
@@ -17,7 +17,7 @@
       "tag": "3-bullseye",
       "aliases": [
         "3.12-bullseye",
-        "3.12.6-bullseye"
+        "3.12.7-bullseye"
       ],
       "variants": [
 

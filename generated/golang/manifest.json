@@ -5,9 +5,9 @@
       "tag": "1-bookworm",
       "aliases": [
         "1.23-bookworm",
-        "1.23.1-bookworm",
+        "1.23.2-bookworm",
         "1.23",
-        "1.23.1"
+        "1.23.2"
       ],
       "variants": [
 
@@ -16,9 +16,9 @@
     {
       "tag": "1.22-bookworm",
       "aliases": [
-        "1.22.7-bookworm",
+        "1.22.8-bookworm",
         "1.22",
-        "1.22.7"
+        "1.22.8"
       ],
       "variants": [
 

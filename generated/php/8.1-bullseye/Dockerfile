@@ -66,7 +66,10 @@ RUN wget -q \
     && chmod +x /usr/local/bin/docker-compose \
     && docker-compose --version
 
-ENV DOCKERIZE_VERSION v0.6.1
+ENV DOCKER_COMPOSE_PLUGIN=2.29.7
+RUN dockerPluginDir=/usr/local/lib/docker/cli-plugins &&   mkdir -p $dockerPluginDir &&   curl -sSL "https://github.com/docker/compose/releases/download/v$DOCKER_COMPOSE_PLUGIN/docker-compose-linux-$(uname -m)" -o $dockerPluginDir/docker-compose &&   chmod +x $dockerPluginDir/docker-compose &&   docker compose version
+
+ENV DOCKERIZE_VERSION v0.8.0
 RUN if grep -q Debian /etc/os-release; then      wget -q https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
      && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
      && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
