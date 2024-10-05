@@ -2,18 +2,126 @@
   "base": "razorci/openjdk",
   "items": [
     {
-      "tag": "24-bookworm",
+      "tag": "11-jammy",
       "aliases": [
-        "24-jdk-bookworm"
+        "11-jdk-jammy"
       ],
       "variants": [
 
       ]
     },
     {
-      "tag": "24-bullseye",
+      "tag": "11-jdk-noble",
       "aliases": [
-        "24-jdk-bullseye"
+        "11-noble"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "11-jre-jammy",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "11-jre-noble",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "17-jammy",
+      "aliases": [
+        "17-jdk-jammy"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "17-jdk-noble",
+      "aliases": [
+        "17-noble"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "17-jre-jammy",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "17-jre-noble",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "21-jammy",
+      "aliases": [
+        "21-jdk-jammy"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "21-jdk-noble",
+      "aliases": [
+        "21-noble"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "21-jre-jammy",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "21-jre-noble",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "23-jdk-noble",
+      "aliases": [
+        "23-noble"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "23-jre-noble",
+      "aliases": [
+
       ],
       "variants": [
 
