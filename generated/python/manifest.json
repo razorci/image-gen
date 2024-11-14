@@ -2,9 +2,48 @@
   "base": "razorci/python",
   "items": [
     {
+      "tag": "3.14.0a1-bookworm",
+      "aliases": [
+        "3.14.0a1"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.14.0a1-bullseye",
+      "aliases": [
+
+      ],
+      "variants": [
+
+      ]
+    },
+    {
       "tag": "3-bookworm",
       "aliases": [
-        "3.12-bookworm",
+        "3.13.0-bookworm",
+        "3.13-bookworm",
+        "3.13.0",
+        "3.13"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3-bullseye",
+      "aliases": [
+        "3.13.0-bullseye",
+        "3.13-bullseye"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
+      "tag": "3.12-bookworm",
+      "aliases": [
         "3.12.7-bookworm",
         "3.12",
         "3.12.7"
@@ -14,9 +53,8 @@
       ]
     },
     {
-      "tag": "3-bullseye",
+      "tag": "3.12-bullseye",
       "aliases": [
-        "3.12-bullseye",
         "3.12.7-bullseye"
       ],
       "variants": [
@@ -78,26 +116,6 @@
       "tag": "3.9-bullseye",
       "aliases": [
         "3.9.20-bullseye"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.8-bookworm",
-      "aliases": [
-        "3.8.20-bookworm",
-        "3.8",
-        "3.8.20"
-      ],
-      "variants": [
-
-      ]
-    },
-    {
-      "tag": "3.8-bullseye",
-      "aliases": [
-        "3.8.20-bullseye"
       ],
       "variants": [
 

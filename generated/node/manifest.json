@@ -2,10 +2,20 @@
   "base": "razorci/node",
   "items": [
     {
+      "tag": "23",
+      "aliases": [
+        "23.1",
+        "23.1.0"
+      ],
+      "variants": [
+
+      ]
+    },
+    {
       "tag": "22",
       "aliases": [
-        "22.9",
-        "22.9.0"
+        "22.11",
+        "22.11.0"
       ],
       "variants": [
 

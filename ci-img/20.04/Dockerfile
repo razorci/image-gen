@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 ## Install Docker
-ENV DOCKER_VERSION=27.2.0
+ENV DOCKER_VERSION=27.3.0
 ARG DOCKER_GID=999
 RUN DIR=$(mktemp -d) \
 	&& DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" \

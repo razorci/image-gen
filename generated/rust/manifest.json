@@ -4,8 +4,8 @@
     {
       "tag": "1-bullseye",
       "aliases": [
-        "1.81-bullseye",
-        "1.81.0-bullseye"
+        "1.82-bullseye",
+        "1.82.0-bullseye"
       ],
       "variants": [
 
@@ -14,10 +14,10 @@
     {
       "tag": "1-bookworm",
       "aliases": [
-        "1.81-bookworm",
-        "1.81.0-bookworm",
-        "1.81",
-        "1.81.0"
+        "1.82-bookworm",
+        "1.82.0-bookworm",
+        "1.82",
+        "1.82.0"
       ],
       "variants": [
 
